@@ -37,6 +37,8 @@ import Jobs from "./components/Jobs/Jobs.jsx";
 import Report from "./components/Dashboard/Report/Report.jsx";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
 
+import ToDoWrapper from "./components/ToDoList/ToDoWrapper.jsx";
+
 function Main() {
   const [user, setUser] = useState(null);
 
@@ -97,6 +99,7 @@ function Main() {
         <Route path="studentinfo" element={<StudentInfo />} />
         <Route path="reports" element={<Report />} />
         <Route path="contact" element={<ContactUs />} />
+        <Route path="todo" element={<ToDoWrapper />} />
       </Route>
     )
   );
