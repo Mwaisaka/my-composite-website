@@ -1,0 +1,49 @@
+.login-form-container {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  height: 40vh; /* This ensures the form is centered vertically on the page */
+  /* flex-direction: column; */
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+}
+
+.form-label {
+  width: 150px; /* Adjust width as needed */
+  margin-right: 10px; /* Add margin for spacing */
+}
+
+.form-input {
+  
+  padding: 18px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  height: 30px; /* Set the height */
+  border: 5px solid #ccc; /* Add border */
+  margin-bottom: 10px;
+  width: 350px; /* Fixed width to prevent resizing */
+}
+
+.error-message {
+  color: red;
+  margin-top: 4px;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+
+  .forgot-password {
+  flex:1;
+    margin-left: 100px; /* Adjust spacing as needed */
+  }
+
+  
+
+  
+  
