@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import digitalImage from "../Images/digitalImage.jpg";
+import SoftDev from "../Images/SoftDev.jpg";
 import School from "../kindegerten/primary";
 
 export default function Header() {
@@ -26,7 +26,7 @@ export default function Header() {
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
-            <img src={digitalImage} className="mr-6 h-24" alt="Logo" style={{width:"100px",height:"100px"}} />
+            <img src={SoftDev} className="mr-6 h-24" alt="Logo" style={{width:"100px",height:"100px"}} />
           </Link>
           <div className="flex items-center lg:order-2">
             <Link

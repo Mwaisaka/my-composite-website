@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Logo from '../logo.jpg'
-import digitalImage from "../Images/digitalImage.jpg";
+import SoftDev from "../Images/SoftDev.jpg";
 
 export default function Footer() {
     return (
@@ -11,7 +11,7 @@ export default function Footer() {
                     <div className="mb-6 md:mb-0">
                         <Link to="/" className="flex items-center">
                             <img
-                                src={digitalImage}
+                                src={SoftDev}
                                 className="mr-3 h-16"
                                 alt="Logo"
                                 style={{width:"100px",height:"100px"}}

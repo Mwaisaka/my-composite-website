@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Image1 from '../Images/logo1.jpg';
-import digitalImage from "../Images/digitalImage.jpg";
+import SoftDev from "../Images/SoftDev.jpg";
 
 export default function About() {
     return (
@@ -10,7 +9,7 @@ export default function About() {
                 <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
                     <div className="md:w-5/12 lg:w-5/12">
                         <img
-                            src={digitalImage}
+                            src={SoftDev}
                             alt="image"
                             className="rounded-lg shadow-md"
                         />
