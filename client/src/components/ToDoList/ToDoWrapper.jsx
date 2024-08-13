@@ -20,7 +20,7 @@ function ToDoWrapper(){
     const toggleComplete = (id) =>{
         setToDos(
             todos.map((todo) =>
-            todo.id ===id? {...todos, completed: !todo.completed} : todo
+            todo.id ===id? {...todo, completed: !todo.completed} : todo
             )
         );
     }
@@ -28,7 +28,7 @@ function ToDoWrapper(){
     const editTodo = (id) =>{
         setToDos(
             todos.map((todo) =>
-                todo.id === id? {...todos, isEditing: !todo.isEditing} : todo
+                todo.id === id? {...todo, isEditing: !todo.isEditing} : todo
             )
         );
     }

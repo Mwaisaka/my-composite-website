@@ -17,8 +17,8 @@ function ToDoForm ({addToDo}) {
     };
 
     return(
-        <form onSubmit={handleSubmit} className='ToDoForm'>
-            <input type="text" value={value} onChange={(e)=>setValue(e.target.value)} className='todo-input' placeholder='What is the task today?'/>
+        <form onSubmit={handleSubmit} className='ToDo-Form'>
+            <input type="text" value={value} onChange={(e)=>setValue(e.target.value)} className='todo-input-form' placeholder='What is the task today?'/>
             <button type="submit" className='todo-btn'>Add Task</button>
         </form>
     )

@@ -104,10 +104,7 @@ function ContactUs() {
                       </div>
                       <div className="cont">
                         <p>
-                          <strong>Physical Address</strong> : Eastern region of the
-                          Democratic Republic of Congo in the province of
-                          NORD-KIVU, TERRITOIRE DE MASISI, GROUPEMENT DE
-                          KAMURONZA, SAKE, QUARTIER MAYUTSA, AVENUE MULULU.
+                          <strong>Physical Address</strong> : Nairobi-Kenya.
                         </p>
                       </div>
                     </div>
@@ -119,8 +116,8 @@ function ContactUs() {
                       </div>
                       <div className="cont">
                         <p>
-                          <strong>Telephone Contacts</strong> : +243 975034623 ||
-                          +243 995840830
+                          <strong>Telephone Contacts</strong> : +254 *********** ||
+                          +254 ***********
                         </p>
                       </div>
                     </div>
@@ -134,7 +131,7 @@ function ContactUs() {
                         <p>
                           <strong>Email Address : </strong>
                           <a href="mailto:info@csk.edu" style={{ color: "blue" }}>
-                            <u>info@csk.edu</u>
+                            <u>admin@gmail.com</u>
                           </a>
                         </p>
                       </div>

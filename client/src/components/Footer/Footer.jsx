@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Logo from '../logo.jpg'
+import digitalImage from "../Images/digitalImage.jpg";
 
 export default function Footer() {
     return (
@@ -10,9 +11,10 @@ export default function Footer() {
                     <div className="mb-6 md:mb-0">
                         <Link to="/" className="flex items-center">
                             <img
-                                src={Logo}
+                                src={digitalImage}
                                 className="mr-3 h-16"
                                 alt="Logo"
+                                style={{width:"100px",height:"100px"}}
                             />
                         </Link>
                     </div>
@@ -37,7 +39,7 @@ export default function Footer() {
                             <ul className="text-gray-500 font-medium">
                                 <li className="mb-4">
                                     <a
-                                        href="https://github.com/ussenuk"
+                                        href="https://github.com/Mwaisaka"
                                         className="hover:underline"
                                         target="_blank"
                                         rel="noreferrer"
@@ -72,9 +74,9 @@ export default function Footer() {
                 <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <span className="text-sm text-gray-500 sm:text-center">
-                        © 2023
-                        <a href="https://github.com/ussenuk" className="hover:underline">
-                            U-soft
+                        © 2024 <t />
+                        <a href="https://github.com/Mwaisaka" className="hover:underline">
+                            M-soft Technologies Ltd
                         </a>
                         . All Rights Reserved.
                     </span>
@@ -123,7 +125,7 @@ export default function Footer() {
                             </svg>
                             <span className="sr-only">Twitter page</span>
                         </Link>
-                        <Link to="#" className="text-gray-500">
+                        <Link to="https://github.com/Mwaisaka" className="text-gray-500">
                             <svg
                                 className="w-4 h-4"
                                 aria-hidden="true"

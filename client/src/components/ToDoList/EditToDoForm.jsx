@@ -8,15 +8,15 @@ function EditToDoForm({ editToDo, task }) {
 
     //edit todo
     editToDo(value, task.id);
+    setValue("");
   };
   return (
-    <form onSubmit={handleSubmit} className="TodoForm">
+    <form onSubmit={handleSubmit} className="ToDo-Form">
       <input
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         className="todo-input"
-        placeholder="Update task"
       />
       <button type="submit" className="todo-btn">
         Edit Task
