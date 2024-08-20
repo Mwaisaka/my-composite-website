@@ -23,10 +23,9 @@ export default function Carousel({ slides }) {
 
   return (
     <div
-      className="overflow-hidden relative"
+      className="rounded overflow-hidden shadow-lg px-6 py-4 "
       style={{
-        maxWidth: "1200px",
-        height: "500px",
+        maxWidth: "1250px",
         marginBottom: "30px",
         marginTop: "20px",
       }}
@@ -48,9 +47,7 @@ export default function Carousel({ slides }) {
               className="w-full h-full object-cover"
               alt="Slide"
             />
-            <div
-              className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center p-5"
-            >
+            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center p-5">
               <span className="text-2xl font-bold text-white text-center">
                 {s.content}
               </span>

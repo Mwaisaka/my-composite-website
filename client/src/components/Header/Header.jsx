@@ -55,7 +55,7 @@ export default function Header() {
                                         } lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                   }
                 >
-                  HOME
+                  Home
                 </NavLink>
               </li>
               <li>
@@ -72,10 +72,10 @@ export default function Header() {
                                         lg:border-0 hover:text-orange-700 lg:p-0`
                   }
                 >
-                  ABOUT
+                  About
                 </NavLink>
               </li>
-              <li className="relative group">
+              {/* <li className="relative group">
                 <NavLink
                   to="/inscription"
                   className={({ isActive }) =>
@@ -105,8 +105,8 @@ export default function Header() {
                     News Related to Our School
                   </NavLink>
                 </div>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <div
                   className="relative dropdown"
                   onMouseEnter={() => toggleSchoolDropdown()}
@@ -140,8 +140,8 @@ export default function Header() {
                     </ul>
                   )}
                 </div>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <div
                   className="relative dropdown"
                   onMouseEnter={() => toggleSupportDropdown()}
@@ -169,9 +169,9 @@ export default function Header() {
                     </ul>
                   )}
                 </div>
-              </li>
+              </li> */}
 
-              <li>
+              {/* <li>
                 <NavLink
                   to="/job"
                   className={({ isActive }) =>
@@ -205,9 +205,9 @@ export default function Header() {
                 >
                   CONTACT US
                 </NavLink>
-              </li>
+              </li> */}
 
-              <li>
+              {/* <li>
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
@@ -223,6 +223,25 @@ export default function Header() {
                   }
                 >
                   LOG IN
+                </NavLink>
+              </li> */}
+
+<li>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 
+                                        ${
+                                          isActive
+                                            ? "text-orange-500"
+                                            : "text-gray-700"
+                                        } 
+                                        lg:hover:bg-transparent 
+                                        lg:border-0 
+                                        hover:text-orange-700 lg:p-0`
+                  }
+                >
+                  Portfolio
                 </NavLink>
               </li>
 
@@ -241,7 +260,7 @@ export default function Header() {
                                         hover:text-orange-700 lg:p-0`
                   }
                 >
-                  PLANNER
+                  Planner
                 </NavLink>
               </li>
 

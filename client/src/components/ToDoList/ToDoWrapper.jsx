@@ -42,7 +42,7 @@ function ToDoWrapper(){
       };
 
     return(
-        <div className="ToDoWrapper">
+        <div className="ToDoWrapper " >
             <h1>Get Things Done!</h1>
             <ToDoForm addToDo={addToDo} />
             {/* display todos */}
