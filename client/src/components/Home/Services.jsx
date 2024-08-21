@@ -4,7 +4,7 @@ import WebScraping from "../Images/WebScraping.png";
 import EthicalHacking from "../Images/EthicalHacking.png";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 
-function Testimonials() {
+function Services() {
   return (
     <div
       className="rounded overflow-hidden shadow-lg px-6 py-1"
@@ -15,18 +15,20 @@ function Testimonials() {
     >
       <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">
         What services I am I providing?
-        <h3 class="text-2xl font-normal text-gray-800 mb-8">
+        <h3 class="text-2xl font-normal text-gray-800 mt-4 mb-8">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <hr class="border-t-2 border-red-700  mb-2" style={{ width: "45%", margin: "15px auto" }} />
         </h3>
       </h2>
+      
 
       <div
         class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5"
         style={{
           maxWidth: "1200px",
-          height: "500px",
+          height: "auto",
           marginBottom: "10px",
-          marginTop: "10px",
+          marginTop: "10px"
         }}
       >
         <div className="rounded overflow-hidden shadow-lg">
@@ -96,4 +98,4 @@ function Testimonials() {
   );
 }
 
-export default Testimonials;
+export default Services;

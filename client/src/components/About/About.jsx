@@ -14,6 +14,10 @@ export default function About() {
         About Me
         <h3 class="text-2xl font-normal text-gray-800 mb-8">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <hr
+            class="border-t-2 border-red-700  mb-2"
+            style={{ width: "15%", margin: "15px auto" }}
+          />
         </h3>
       </h2>
       <div

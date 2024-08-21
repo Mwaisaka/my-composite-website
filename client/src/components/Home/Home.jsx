@@ -1,9 +1,10 @@
 import React from "react";
 import Welcome from "../Home/Welcome";
 import Bio from "../Home/Bio";
-import Testimonials from "./Testimonials";
+import Services from "./Services";
 import Profile1 from "../Images/Profile1.png";
 import AboutMe from "../Home/AboutMe";
+import Experience from "./Experience";
 
 export default function Home() {
   let slides = [
@@ -31,10 +32,11 @@ export default function Home() {
 
   return (
     <div className="w-full m-auto pt-3 max-w-none">
-       <Welcome />
-       <AboutMe />
-      <Bio slides={slides} />    
-      <Testimonials />
+      <Welcome />
+      <AboutMe />
+      <Services />
+      <Experience />
+      <Bio slides={slides} />
     </div>
   );
 }

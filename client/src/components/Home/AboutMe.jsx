@@ -13,15 +13,16 @@ function About() {
     >
       <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">
         About Me
-        <h3 class="text-2xl font-normal text-gray-800 mb-8">
+        <h3 class="text-2xl font-normal text-gray-800 mt-4 mb-8">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <hr class="border-t-2 border-red-700  mb-2" style={{ width: "15%", margin: "15px auto" }} />
         </h3>
       </h2>
       <div
         className=" grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5"
         style={{
           maxWidth: "1200px",
-          height: "500px",
+          height: "auto",
           marginBottom: "30px",
           marginTop: "20px",
         }}
