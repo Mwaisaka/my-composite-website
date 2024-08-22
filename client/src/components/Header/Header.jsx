@@ -26,7 +26,12 @@ export default function Header() {
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
-            <img src={SoftDev} className="mr-6 h-24" alt="Logo" style={{width:"100px",height:"100px"}} />
+            <img
+              src={SoftDev}
+              className="mr-6 h-24"
+              alt="Logo"
+              style={{ width: "100px", height: "100px" }}
+            />
           </Link>
           <div className="flex items-center lg:order-2">
             <Link
@@ -226,7 +231,7 @@ export default function Header() {
                 </NavLink>
               </li> */}
 
-<li>
+              <li>
                 <NavLink
                   to="/login"
                   className={({ isActive }) =>
@@ -247,6 +252,24 @@ export default function Header() {
 
               <li>
                 <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 
+                                        ${
+                                          isActive
+                                            ? "text-orange-500"
+                                            : "text-gray-700"
+                                        } 
+                                        lg:hover:bg-transparent 
+                                        lg:border-0 
+                                        hover:text-orange-700 lg:p-0`
+                  }
+                >
+                  Contact
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
                   to="/todo"
                   className={({ isActive }) =>
                     `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 
@@ -263,7 +286,6 @@ export default function Header() {
                   Planner
                 </NavLink>
               </li>
-
             </ul>
           </div>
         </div>

@@ -70,17 +70,17 @@ function Experience() {
           return (
             <div
               key={index}
-              className="rounded overflow-hidden shadow-lg flex flex-col justify-between"
+              className="rounded overflow-hidden shadow-lg flex flex-col justify-between bg-gray-200"
               style={{ position: "relative" }}
             >
-              <div className="px-6 py-4">
+              <div className="px-6 py-5" >
                 <h3 className="text-2xl text-left font-bold text-gray-800 mb-5">
                   {experience.title}
                 </h3>
                 <h2 className="text-xl text-left font-normal text-red-500 mb-5">
                   {experience.startYear} - {experience.endYear}
                 </h2>
-                <p className="text-gray-800 text-base mb-5 text-left">
+                <p className="text-gray-800 text-base mb-1 text-left">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                   elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus
                   leo.
