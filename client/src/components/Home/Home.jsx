@@ -5,6 +5,9 @@ import Services from "./Services";
 import Profile1 from "../Images/Profile1.png";
 import AboutMe from "../Home/AboutMe";
 import Experience from "./Experience";
+import Reviews from "./Reviews";
+import StayInTouch from "./StayInTouch";
+
 
 export default function Home() {
   let slides = [
@@ -37,6 +40,8 @@ export default function Home() {
       <Services />
       <Experience />
       <Bio slides={slides} />
+      <Reviews />
+      <StayInTouch />
     </div>
   );
 }
