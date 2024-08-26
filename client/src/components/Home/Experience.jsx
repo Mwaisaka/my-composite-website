@@ -70,7 +70,7 @@ function Experience() {
           return (
             <div
               key={index}
-              className="rounded overflow-hidden shadow-lg flex flex-col justify-between bg-gray-200"
+              className="rounded overflow-hidden shadow-lg flex flex-col justify-between bg-gray-100"
               style={{ position: "relative" }}
             >
               <div className="px-6 py-5" >
