@@ -31,6 +31,11 @@ function About() {
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2 ">
               <h3>Developing With a Passion While Exploring The World.</h3>
+              <hr
+              class="border-t-2 border-red-700  mb-2 py-3"
+              style={{ width: "15%", margin: "15px auto" ,
+                marginLeft: "0px", }}
+            />
             </div>
             <p className="text-gray-700 text-base">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit

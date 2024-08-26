@@ -1,7 +1,7 @@
 import React from "react";
+import Reviewer from "../Images/Reviewer.png";
 
 function Reviews() {
- 
   const experiences = [
     {
       author: "John Doe",
@@ -22,18 +22,18 @@ function Reviews() {
 
   return (
     <div
-      className="rounded overflow-hidden shadow-lg px-6 py-1"
+      className="rounded overflow-hidden shadow-none px-6 py-1 bg-slate-50"
       style={{
         marginBottom: "20px",
         marginTop: "20px",
       }}
     >
-      <h2 className="text-4xl font-bold text-center text-gray-800 mb-2">
+      <h2 className="text-3xl font-bold text-center text-gray-800 py-3">
         What My Clients Say
-        <h3 className="text-xl font-normal text-gray-800 mb-4 py-2">
+        <h3 className="text-xl font-normal text-gray-800 mb-6 py-3">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           <hr
-            className="border-t-2 border-red-700 mb-2"
+            className="border-t-2 border-red-700 mb-3"
             style={{ width: "25%", margin: "15px auto" }}
           />
         </h3>
@@ -52,23 +52,29 @@ function Reviews() {
           return (
             <div
               key={index}
-              className="rounded overflow-hidden shadow-lg flex flex-col justify-between bg-gray-100"
+              className="rounded overflow-hidden shadow-none flex flex-col justify-between bg-gray-200"
               style={{ position: "relative" }}
             >
               <div className="px-6 py-1">
                 <p className="text-gray-800 text-base mb-1 mt-2 text-center">
-                  <div className="font-bold text-red-500 text-center text-3xl">
+                  <div className="font-bold text-red-400 text-center text-3xl">
                     "
+                    <img
+                      className="w-[25%] mx-auto border-4 border-red-400 rounded-full"
+                      src={Reviewer}
+                      alt="Reviewer"
+                    />
                   </div>
-                  {experience.comment}
+                  <div className="mt-5">{experience.comment}</div>
                 </p>
+                <div className="rounded overflow-hidden shadow-none px-6 py-2"></div>
               </div>
               <hr
                 className="border-t-2 border-red-700 mb-2"
                 style={{ width: "20%", margin: "15px auto" }}
               />
               <div>
-                <p className="text-gray-800 text-base mb-1 text-center">
+                <p className="text-gray-800 text-base mb-3 text-center">
                   {experience.author}
                 </p>
               </div>

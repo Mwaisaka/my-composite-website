@@ -15,10 +15,15 @@ function Welcome() {
     >
       <div className="rounded overflow-hidden shadow-lg">
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2 ">
-            <h2>
+          <div className="font-bold text-3xl mb-2 ">
+            <h3>
               I am a Fullstack Web Developer <br />
-            </h2>
+              <hr
+              class="border-t-2 border-red-700  mb-2 py-3"
+              style={{ width: "15%", margin: "15px auto" ,
+                marginLeft: "0px", }}
+            />
+            </h3>
           </div>
           <p className="text-gray-700 text-base">
             I specialize in full-stack development, leveraging my creativity and

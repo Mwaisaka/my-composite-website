@@ -73,7 +73,7 @@ function Contact() {
         <button
           onClick={handleSubscribe}
           className={`${
-            isSending ? "bg-gray-500" : "bg-orange-700 hover:bg-blue-800"
+            isSending ? "bg-gray-500" : "bg-orange-500 hover:bg-blue-800"
           } text-white px-4 py-2 rounded-lg transition`}
           style={{ marginLeft: "10px" }}
           disabled={isSending}
