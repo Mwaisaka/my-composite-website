@@ -34,14 +34,11 @@ export default function Header() {
             />
           </Link>
           <div className="flex items-center lg:order-2">
-            <Link
-              to="#"
-              className="text-white bg-black hover:bg-black-800 focus:ring-4 focus:ring-black-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-            ></Link>
+            
             <Link
               to="#"
               className="text-white bg-orange-500 hover:bg-orange-500 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
-            ></Link>
+            >Hire Me</Link>
           </div>
           <div
             className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
