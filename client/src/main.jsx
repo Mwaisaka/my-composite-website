@@ -18,6 +18,8 @@ import Highschool from "./components/HSCHOOL/secondary.jsx";
 import DonationPage from "./components/donate/donate.jsx";
 import ScholarshipPage from "./components/scholarship/scholarship.jsx";
 import AdmissionPage from "./components/admissions/admissions.jsx";
+import Portfolio from "./components/Portfolio/Portfolio.jsx";
+import Gallery from "./components/Portfolio/Gallery.jsx";
 
 // import JobsList from "./components/Jobs/Jobs.jsx";
 import AccountingRecords from "./components/Dashboard/Accounts/AccountRecords.jsx";
@@ -100,6 +102,8 @@ function Main() {
         <Route path="reports" element={<Report />} />
         <Route path="contact" element={<ContactUs />} />
         <Route path="todo" element={<ToDoWrapper />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="gallery" element={<Gallery />} />
       </Route>
     )
   );
