@@ -13,9 +13,14 @@ function ContactUs() {
       marginTop: "20px",
     }}>
       <div>
-        <div className="section-title" style={{ textAlign: "center", marginBottom: "40px", }}>
-          <h2 className="text-4xl py-2">Contact</h2>
-          <hr class="border-t-2 border-red-700" style={{ width: "10%", margin: "15px auto" }} />
+      <div className="bg-gray-100 py-2">
+          <h1 class="text-4xl font-bold text-center text-gray-800 mb-4">
+            Contact
+            <hr
+              class="border-t-2 border-red-700  mb-2 py-2"
+              style={{ width: "10%", margin: "15px auto" }}
+            />
+          </h1>
         </div>
         <div className="row">
 
