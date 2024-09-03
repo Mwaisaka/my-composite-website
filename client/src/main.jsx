@@ -29,17 +29,18 @@ import StudentInfo from "./components/Dashboard/Accounts/StudentInfo.jsx";
 
 import News from "./components/Registration/News.jsx";
 import StudentRegistration from "./components/Registration/StudentRegistration.jsx";
-import Dashboard from "./components/Dashboard/Dashboard.jsx";
+import Dashboard from "./components/SiteAdmin/Dashboard/Dashboard.jsx";
 // import Sidebar from "./components/Dashboard/Sidebar.jsx";
 import UsersList from "./components/Dashboard/UsersList.jsx";
-import Login from "./components/Login/Login.jsx";
-import ResetPassword from "./components/Login/ResetPassword.jsx";
-import UserRegistration from "./components/Login/UserRegistration.jsx";
-import Jobs from "./components/Jobs/Jobs.jsx";
+import AdminLogin from "./components/SiteAdmin/AdminLogin.jsx";
+// import ResetPassword from "./components/Login/ResetPassword.jsx";
+// import UserRegistration from "./components/Login/UserRegistration.jsx";
+
 import Report from "./components/Dashboard/Report/Report.jsx";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
 
-import ToDoWrapper from "./components/ToDoList/ToDoWrapper.jsx";
+import ToDoWrapper from "./components/Planner/ToDoWrapper.jsx";
+import SubscribersList from "./components/SiteAdmin/Dashboard/SubscribersList.jsx";
 
 function Main() {
   const [user, setUser] = useState(null);
@@ -88,20 +89,20 @@ function Main() {
           }
         />
         <Route path="/UsersList" element={<UsersList />} />
+        <Route path="/SubscribersList" element={<SubscribersList />} />
         <Route
-          path="login"
-          element={<Login onLogin={handleLogin} user={user} />}
+          path="admin-login"
+          element={<AdminLogin onLogin={handleLogin} user={user} />}
         />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/user-registration" element={<UserRegistration />} />
-        <Route path="job" element={<Jobs />} />
+        
+        
         <Route path="accounting-records" element={<AccountingRecords />} />
         <Route path="admin" element={<Admin />} />
         <Route path="departments" element={<Department />} />
         <Route path="studentinfo" element={<StudentInfo />} />
         <Route path="reports" element={<Report />} />
         <Route path="contact" element={<ContactUs />} />
-        <Route path="todo" element={<ToDoWrapper />} />
+        <Route path="planner" element={<ToDoWrapper />} />
         <Route path="portfolio" element={<Portfolio />} />
         <Route path="gallery" element={<Gallery />} />
       </Route>
@@ -115,10 +116,5 @@ function Main() {
   );
 }
 
-// ReactDOM.createRoot(document.getElementById("root")).render(
-//   <React.StrictMode>
-//     <RouterProvider router={router} />
-//   </React.StrictMode>
-// );
 
 ReactDOM.createRoot(document.getElementById("root")).render(<Main />);

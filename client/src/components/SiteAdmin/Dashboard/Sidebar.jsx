@@ -34,7 +34,7 @@ const Sidebar = ({ onLogout }) => {
     <div className="menu">
       <div className="logo">
         <BiBookAlt className="logo-icon" />
-        <h2>Overview</h2>
+        <h2>Dashboard Overview</h2>
       </div>
       <div className="menu--list">
         <a href="#" className="item active">

@@ -27,16 +27,16 @@ h1 {
 
 .ToDoWrapper {
   background: #2d2e2e80;
-  margin-top: 10px;
-  padding: 2rem;
+  margin-top: 30px;
+  padding: 5rem;
   border-radius: 5px;
   width: 1231px;
-  height: 500px;
+  height: auto;
   margin-bottom: 2rem;
 }
 
 .ToDo-Form {
-    width: 100%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: flex-start; 

@@ -42,26 +42,26 @@ function ToDoWrapper() {
     };
 
     return (
-        <div className="w-full m-auto pt-3 max-w-none" >
-            <div className="ToDoWrapper">
-                <h1>Getting Things Done!</h1>
-                <ToDoForm addToDo={addToDo} />
-                {/* display todos */}
-                {todos.map((todo) =>
-                    todo.isEditing ? (
-                        <EditToDoForm editToDo={editTask} task={todo} />
-                    ) : (
-                        <ToDo
-                            key={todo.id}
-                            task={todo}
-                            deleteTodo={deleteTodo}
-                            editTodo={editTodo}
-                            toggleComplete={toggleComplete}
-                        />
-                    )
-                )}
-            </div>
+
+        <div className="ToDoWrapper">
+            <h1>Getting Things Done!</h1>
+            <ToDoForm addToDo={addToDo} />
+            {/* display todos */}
+            {todos.map((todo) =>
+                todo.isEditing ? (
+                    <EditToDoForm editToDo={editTask} task={todo} />
+                ) : (
+                    <ToDo
+                        key={todo.id}
+                        task={todo}
+                        deleteTodo={deleteTodo}
+                        editTodo={editTodo}
+                        toggleComplete={toggleComplete}
+                    />
+                )
+            )}
         </div>
+
 
 
 
