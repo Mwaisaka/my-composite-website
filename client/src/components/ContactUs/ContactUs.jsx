@@ -143,7 +143,7 @@ function ContactUs() {
                         </div>
                       </div>
                       <div className="col-md-12">
-                        <div className="singel-form form-group">
+                        <div className="singel-form form-group ">
                           <textarea
                             name="message"
                             placeholder="Message"
@@ -152,6 +152,8 @@ function ContactUs() {
                             ref={textareaRef}
                             onInput={updateCharacterCount}
                             maxLength={maxLength}
+                            style={{ resize: "vertical" }}
+                            spellCheck={true}
                           ></textarea>
                           <div className="help-block with-errors"></div>
 
