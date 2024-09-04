@@ -42,6 +42,7 @@ import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import ToDoWrapper from "./components/Planner/ToDoWrapper.jsx";
 import SubscribersList from "./components/SiteAdmin/Dashboard/SubscribersList.jsx";
 
+
 function Main() {
   const [user, setUser] = useState(null);
 
@@ -66,8 +67,8 @@ function Main() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
-        <Route path="" element={<Home />} />
-        <Route path="about" element={<About />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="inscription" element={<StudentRegistration />} />
         <Route path="news" element={<News />} />
         <Route path="StudentRegistration" element={<StudentRegistration />} />
@@ -94,8 +95,8 @@ function Main() {
           path="admin-login"
           element={<AdminLogin onLogin={handleLogin} user={user} />}
         />
-        
-        
+
+
         <Route path="accounting-records" element={<AccountingRecords />} />
         <Route path="admin" element={<Admin />} />
         <Route path="departments" element={<Department />} />
@@ -111,7 +112,8 @@ function Main() {
 
   return (
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <RouterProvider router={router}>
+      </RouterProvider>
     </React.StrictMode>
   );
 }
