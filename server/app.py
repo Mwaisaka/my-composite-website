@@ -4,7 +4,6 @@ from flask import render_template, request, session, jsonify, make_response
 from flask_restful import Resource, reqparse
 from sqlalchemy.exc import IntegrityError
 from flask_cors import CORS
-
 from config import app, db, api, cors
 from models import User, Department, Accounting, UserDepartment, Salary, Job, Registration, Subscriber
 
@@ -180,7 +179,7 @@ class AccountingReport(Resource):
         return make_response(jsonify(accounting_report), 200)
 
 
-###### admin
+###### SiteAdmin
 class SiteAdmin(Resource):
 
     def delete(self, id):        
@@ -459,7 +458,6 @@ api.add_resource(CheckSession, "/check_session", endpoint="check_session")
 api.add_resource(Accounts, "/accounts", endpoint="accounts")
 api.add_resource(AccountingReport, "/accounting_report", endpoint="accounting_report")
 api.add_resource(Salaries, "/salaries", endpoint="salaries")
-# api.add_resource(Departments, "/departments/<int:department_id>", endpoint="department")
 api.add_resource(Logout, "/logout", endpoint="logout")
 api.add_resource(Users, "/users", endpoint="users")
 api.add_resource(Jobs, "/jobs", endpoint="jobs")
