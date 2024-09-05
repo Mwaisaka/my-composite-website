@@ -5,17 +5,17 @@ from random import randint, choice as rc, random, sample,uniform
 from faker import Faker
 
 from app import app
-from models import db, User, Department, Accounting, UserDepartment, Salary, Job
+from models import db, User, Department, Accounting, UserDepartment, Salary, Job, Subscriber
 
 fake = Faker()
 
 with app.app_context():
     print("Deleting all records...")
-    User.query.delete()
     Department.query.delete()
     Accounting.query.delete()
     UserDepartment.query.delete()
     Job.query.delete()
+    Subscriber.query.delete()
 
     fake = Faker()
 
@@ -188,4 +188,24 @@ with app.app_context():
         db.session.commit()
 
     seed_jobs()
+    
+    print("Creating Subscribers...")
+
+    subscribers = []
+    emails = set()
+
+    for _ in range(10):  # Create 10 unique subscribers
+        email = fake.email()
+        while email in emails:  # Ensure emails are unique
+            email = fake.email()
+        emails.add(email)
+        
+        subscriber = Subscriber(
+            email=email
+        )
+        subscribers.append(subscriber)
+
+    db.session.add_all(subscribers)
+    db.session.commit()
+    
     print("Seed data created successfully!")

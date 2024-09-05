@@ -46,7 +46,7 @@ export default function AdminLoginForm({ onLogin, user }) {
       })
       .then((user) => {
         onLogin(user);
-        navigate("/SubscribersList");
+        navigate("/dashboard");
       })
       .catch((error) => {
         setError(error.message);

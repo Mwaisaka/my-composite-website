@@ -6,16 +6,12 @@ from sqlalchemy.exc import IntegrityError
 from flask_cors import CORS
 
 from config import app, db, api, cors
-from models import User, Department, Accounting, UserDepartment, Salary, Job, Registration
-
+from models import User, Department, Accounting, UserDepartment, Salary, Job, Registration, Subscriber
 
 
 @app.route("/")
-@app.route('/<int:id>')
-def index(id=0):
-    return render_template("index.html")
-# def home():
-#     return "Welcome to my API."
+def home():
+    return "Welcome to my API."
 
 
 # Frank
@@ -59,6 +55,39 @@ class Signup(Resource):
             db.session.rollback()
             return {"message": str(e)}, 500
 
+class Subscribe(Resource):
+    def post(self):
+        json = request.get_json()
+        if not json:
+            return {"message": "Request body is empty."}, 400
+
+        # Validate required fields
+        required_fields = ["email"]
+        for field in required_fields:
+            if field not in json or not json[field]:
+                return {"message": f"Field '{field}' is required."}, 400
+
+        # Check if the email already exists
+        existing_subscriber = Subscriber.query.filter_by(email=json["email"]).first()
+        if existing_subscriber:
+            return {"message": "Email already exists."}, 500
+
+        try:
+            subscriber = Subscriber(
+                email=json["email"],
+            )
+
+            db.session.add(subscriber)
+            db.session.commit()
+            return subscriber.to_dict(), 201
+
+        except IntegrityError as e:
+            db.session.rollback()
+            return {"message": "Email already exists."}, 409
+
+        except Exception as e:
+            db.session.rollback()
+            return {"message": str(e)}, 500
 
 class Login(Resource):
 
@@ -152,10 +181,23 @@ class AccountingReport(Resource):
 
 
 ###### admin
+class SiteAdmin(Resource):
+
+    def delete(self, id):        
+
+        entity = Subscriber.query.filter_by(id=id).first()
+        if entity:            
+            db.session.delete(entity)
+            db.session.commit()
+            return {
+                "message": "Subscriber deleted successfully."
+            }, 200            
+        else:
+            return {"error": "Subscriber not found"}, 404 
+
 class Admin(Resource):
 
-    def delete(self, user_id):
-        
+    def delete(self, user_id, id):        
 
         entity = User.query.filter_by(id=user_id).first()
         if entity:
@@ -178,7 +220,8 @@ class Admin(Resource):
                     "error": "Invalid role. Only 'teacher' or 'student' can be deleted"
                 }, 400
         else:
-            return {"error": "User not found"}, 404
+            return {"error": "User not found"}, 404 
+        
 
     def patch(self, user_id):
   
@@ -282,7 +325,20 @@ class Users(Resource):
 
         return make_response(jsonify(users), 200)
 
-
+class Subscribers(Resource):
+    def get(self):
+        subscribers = []
+        for subscriber in Subscriber.query.all():
+            subscriber_dict= {
+                "id": subscriber.id,
+                "emailadress": subscriber.email,
+            }
+            
+            subscribers.append(subscriber_dict)
+        
+        return make_response(jsonify(subscribers), 200)
+        
+        
 class Jobs(Resource):
     def get(self):
         jobs = []
@@ -411,7 +467,9 @@ api.add_resource(ResetPassword, "/reset_password", endpoint="reset_password")
 api.add_resource(AllDepartments, "/departments", endpoint="departments")
 api.add_resource(Admin, "/admin/<int:user_id>", endpoint="admin")
 api.add_resource(Registrations, "/registrations", endpoint="registrations")
-
+api.add_resource(Subscribers, "/subscribers", endpoint="subscribers")
+api.add_resource(Subscribe, "/subscribe", endpoint="subscribe")
+api.add_resource(SiteAdmin, "/siteadmin/<int:id>", endpoint="siteadmin")
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)

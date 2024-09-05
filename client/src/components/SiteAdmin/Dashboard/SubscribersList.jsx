@@ -1,56 +1,61 @@
 import { useEffect, useState } from "react";
 
 function SubscribersList() {
-  const [users, setUsers] = useState([]);
+  const [subscribers, setSubscribers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchCategory, setSearchCategory] = useState("fullname");
+  const [searchCategory, setSearchCategory] = useState("emailadress");
   const [currentPage, setCurrentPage] = useState(1);
-  const usersPerPage = 15;
+  const subscribersPerPage = 15;
   const [confirmDeleteIds, setConfirmDeleteIds] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/users")
+    fetch("http://127.0.0.1:5555/subscribers")
       .then((r) => r.json())
-      .then(setUsers);
+      .then(setSubscribers);
   }, []);
+  
 
-  const indexOfLastUser = currentPage * usersPerPage;
-  const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsers = users
-    .filter((user) =>
-      user[searchCategory].toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .slice(indexOfFirstUser, indexOfLastUser);
+  const indexOfLastSubscriber = currentPage * subscribersPerPage;
+  const indexOfFirstSubscriber = indexOfLastSubscriber - subscribersPerPage;
+
+ // Filter based on search term
+  const filteredSubscribers  = subscribers
+    .filter((subscriber) =>
+      subscriber[searchCategory] && subscriber[searchCategory].toLowerCase().includes(searchTerm.toLowerCase()))
+  
+
+  // Paginate filtered subscribers
+  const currentSubscribers = filteredSubscribers.slice(indexOfFirstSubscriber, indexOfLastSubscriber);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const handleDelete = (userId) => {
-    setConfirmDeleteIds([...confirmDeleteIds, userId]);
+  const handleDelete = (id) => {
+    setConfirmDeleteIds([...confirmDeleteIds, id]);
   };
 
-  const confirmDelete = async (userId) => {
+  const confirmDelete = async (id) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5555/admin/${userId}`, {
+      const response = await fetch(`http://127.0.0.1:5555/siteadmin/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
-        alert("User deleted successfully");
-        setUsers(users.filter((user) => user.user_id !== userId));
+        alert("Subscriber deleted successfully");
+        setSubscribers(subscribers.filter((subscriber) => subscriber.id !== id));
       } if (response.status === 400) {
         throw new Error("Invalid role. Only 'teacher' or 'student' can be deleted");
       }
       else {
-        throw new Error("Failed to delete user");
+        throw new Error("Failed to delete subscriber");
       }
     } catch (error) {
-      console.error("Error deleting user:", error.message);
+      console.error("Error deleting subscriber:", error.message);
     }
-    setConfirmDeleteIds(confirmDeleteIds.filter((id) => id !== userId)); // Reset confirmDeleteId after deletion
+    setConfirmDeleteIds(confirmDeleteIds.filter((id) => id !== id)); // Reset confirmDeleteId after deletion
   };
 
 
-  const cancelDelete = (userId) => {
-    setConfirmDeleteIds(confirmDeleteIds.filter((id) => id !== userId)); // Remove the canceled user ID
+  const cancelDelete = (id) => {
+    setConfirmDeleteIds(confirmDeleteIds.filter((id) => id !== id)); // Remove the canceled subscriber ID
   };
 
   const handleSearch = (event) => {
@@ -69,7 +74,7 @@ function SubscribersList() {
       <div className="bg-gray-100 py-3" style={{
         marginBottom: "30px",
         marginTop: "10px",
-        width: "1231px",
+        width: "100%",
       }}>
         <div className="bg-gray-200 py-3 mb-5" >
           <h2 class="text-2xl font-bold text-center text-gray-800 mb-3 ">
@@ -83,63 +88,52 @@ function SubscribersList() {
         </div>
 
         <div style={{ textAlign: "center", marginBottom: "10px" }}>
-          <select style={{marginBottom: "10px" }} value={searchCategory} onChange={handleSelectChange}>
-          <option value="">Select</option>
-            <option value="fullname">Name</option>
-            <option value="role">Role</option>
+          <select style={{ marginBottom: "10px" }} value={searchCategory} onChange={handleSelectChange}>
+            <option value="emailadress">Email</option>
           </select>
-          <input style={{marginBottom: "10px" }}
+          <input style={{ marginBottom: "10px" }}
             type="text"
             placeholder="Enter search term"
             value={searchTerm}
             onChange={handleSearch}
           />
 
-          <p>Items found: {currentUsers.length}</p>
+          <p>Items found: {filteredSubscribers.length}</p>
         </div>
 
         <table style={{ borderCollapse: "collapse", width: "100%" }}>
           <thead>
             <tr style={{ borderBottom: "1px solid #ddd" }}>
               <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                FULLNAME
+                ID
               </th>
               <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                AGE (Yrs)
+                EMAIL ADDRESS
               </th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
-                GENDER
-              </th>
-              <th style={{ border: "1px solid #ddd", padding: "8px" }}>ROLE</th>
+
               <th style={{ border: "1px solid #ddd", padding: "8px" }}>
                 ACTION
               </th>
             </tr>
           </thead>
           <tbody>
-            {currentUsers.map((user) => (
-              <tr key={user.id} style={{ borderBottom: "1px solid #ddd" }}>
+            {currentSubscribers.map((subscriber) => (
+              <tr key={subscriber.id} style={{ borderBottom: "1px solid #ddd" }}>
                 <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  {user.fullname}
+                  {subscriber.id}
                 </td>
                 <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  {user.age}
-                </td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  {user.gender}
-                </td>
-                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  {user.role}
+                  {subscriber.emailadress}
                 </td>
 
                 <td style={{ border: "1px solid #ddd", padding: "8px" }}>
-                  <button onClick={() => handleDelete(user.id)}>Delete</button>
-                  {confirmDeleteIds.includes(user.id) && (
+                  <button onClick={() => handleDelete(subscriber.id)}>Delete</button>
+                  {confirmDeleteIds.includes(subscriber.id) && (
                     <>
-                      <button onClick={() => confirmDelete(user.id)}>
+                      <button onClick={() => confirmDelete(subscriber.id)}>
                         Confirm
                       </button>
-                      <button onClick={() => cancelDelete(user.id)}>Cancel</button>
+                      <button onClick={() => cancelDelete(subscriber.id)}>Cancel</button>
                     </>
                   )}
                 </td>
@@ -149,9 +143,9 @@ function SubscribersList() {
         </table>
 
         {/* Pagination */}
-        <div style={{ display: "flex", justifyContent: "center" , marginTop: "20px"}}>
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
           <h3 className="px-2">Page </h3>
-          {[...Array(Math.ceil(users.length / usersPerPage)).keys()].map(
+          {[...Array(Math.ceil(filteredSubscribers.length / subscribersPerPage)).keys()].map(
             (number) => (
               <button className="px-1" key={number} onClick={() => paginate(number + 1)}>
                 {number + 1}
@@ -165,3 +159,4 @@ function SubscribersList() {
 }
 
 export default SubscribersList;
+

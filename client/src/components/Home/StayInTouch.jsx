@@ -5,12 +5,54 @@ function Contact() {
   const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [subscribers, setSubscribers] = useState([]);
+  const [error, setError] = useState(null);
+  const [refreshPage, setRefreshPage] = useState(false);
 
-  const handleSubscribe = () => {
+
+  useEffect(() => {
+    console.log("FETCH!");
+    fetch("/subscribers")
+      .then((res) => res.json())
+      .then((subscribers) => {
+        setSubscribers(subscribers);
+        console.log(subscribers);
+      });
+  }, [refreshPage]);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
     if (!isValidEmail) {
       setMessage("Please enter a valid email address.");
       return;
     }
+
+    fetch("http://127.0.0.1:5555/subscribe",{
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email
+      }),
+    })
+    .then((response) => {
+      if(response.status===500){
+        throw new Error("Email already exists.");
+      }
+      if(!response.ok){
+        throw new Error("Failed to subscribe.");
+      }
+      
+      return response.json();
+    })
+    .catch((error)=>{
+      setError(error.message);
+      if(error.message==="Email already exists."){
+        setError("Email already exists. Please enter a different email.")
+      }
+    })
+
     setIsSending(true);
 
     //Simulate an asynchronous operation(e.g. API call)

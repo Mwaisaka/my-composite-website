@@ -43,7 +43,7 @@ const Sidebar = ({ onLogout }) => {
         </a>
         <div className="item">
           <BiGroup className="icon" />
-          <Link to="/UsersList">List of Active Users</Link>
+          <Link to="/SubscribersList">List of Active Subscribers</Link>
         </div>
         <a href="#" className="item">
           <BiTask className="icon" />
