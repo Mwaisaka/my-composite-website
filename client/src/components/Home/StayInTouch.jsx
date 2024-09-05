@@ -10,59 +10,49 @@ function Contact() {
   const [refreshPage, setRefreshPage] = useState(false);
 
 
-  useEffect(() => {
-    console.log("FETCH!");
-    fetch("/subscribers")
-      .then((res) => res.json())
-      .then((subscribers) => {
-        setSubscribers(subscribers);
-        console.log(subscribers);
-      });
-  }, [refreshPage]);
-
   const handleSubscribe = (e) => {
     e.preventDefault();
+
+    setError(null); // Reset error state
+
+    // Validate email
     if (!isValidEmail) {
       setMessage("Please enter a valid email address.");
       return;
     }
+
+    setIsSending(true);
 
     fetch("http://127.0.0.1:5555/subscribe",{
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        email: email
-      }),
+      body: JSON.stringify({email: email}),
     })
     .then((response) => {
       if(response.status===500){
         throw new Error("Email already exists.");
-      }
-      if(!response.ok){
-        throw new Error("Failed to subscribe.");
-      }
-      
+      }      
       return response.json();
     })
-    .catch((error)=>{
-      setError(error.message);
-      if(error.message==="Email already exists."){
-        setError("Email already exists. Please enter a different email.")
-      }
-    })
-
-    setIsSending(true);
-
-    //Simulate an asynchronous operation(e.g. API call)
-    setTimeout(() => {
-      setIsSending(false);
-      setMessage("Thanks for contacting us! We will be in touch wih you soon.");
+    .then(() => {
+      setMessage("Thanks for contacting us! We will be in touch with you soon.");
       setEmail("");
       setIsValidEmail(false); // Reset the email validity
-    }, 3000);
-  };
+    })
+    .catch((error)=>{
+      if (error.message === "Email already exists.") {
+        setError("Email already exists. Please enter a different email.");
+      } else {
+        setError("An error occurred while subscribing. Please try again.");
+      }
+    })
+    .finally(() => {
+      setIsSending(false); // Reset sending state
+    });
+};
+
 
   const validateEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -126,6 +116,7 @@ function Contact() {
       {message && (
         <div className="text-center text-green-600 mt-4">{message}</div>
       )}
+      {error && <div className="text-center text-red-600 mt-4">{error}</div>}
     </div>
   );
 }

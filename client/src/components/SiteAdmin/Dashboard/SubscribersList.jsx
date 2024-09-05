@@ -5,7 +5,7 @@ function SubscribersList() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchCategory, setSearchCategory] = useState("emailadress");
   const [currentPage, setCurrentPage] = useState(1);
-  const subscribersPerPage = 15;
+  const subscribersPerPage = 8;
   const [confirmDeleteIds, setConfirmDeleteIds] = useState([]);
 
   useEffect(() => {
