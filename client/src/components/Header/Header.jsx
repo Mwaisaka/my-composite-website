@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <header className="shadow-none sticky z-50 top-0">
-      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
+      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 w-full">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">
             <img
@@ -25,7 +25,7 @@ export default function Header() {
               style={{ width: "100px", height: "100px" }}
             />
           </Link>
-          <div className="flex items-center lg:order-2">
+          <div className="flex items-center lg:order-3 lg:px-24 lg:space-x-10">
             <Link
               to="/about"
               className="text-white bg-orange-500 hover:bg-orange-500 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"

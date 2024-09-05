@@ -90,7 +90,7 @@ export default function AdminLoginForm({ onLogin, user }) {
       <div className="rounded overflow-hidden shadow-none px-6 py-2" style={{
         marginBottom: "10px",
         marginTop: "10px",
-        width: "1231px",
+        width: "100%",
       }}>
 
         <div className="bg-gray-100 py-3">
@@ -104,7 +104,7 @@ export default function AdminLoginForm({ onLogin, user }) {
         </div>
 
         <div className="bg-gray-100 py-6 mt-8" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
-          <form onSubmit={handleSubmit} style={{ margin: "20px", width: "800px", height: "250px" }}>
+          <form onSubmit={handleSubmit} style={{ margin: "20px", width: "100%", height: "auto" }}>
             <div className="form-group flex items-center mb-4">
               <label htmlFor="username" className="form-label mr-4 text-left">
                 Username:
