@@ -41,6 +41,7 @@ import ContactUs from "./components/ContactUs/ContactUs.jsx";
 
 import ToDoWrapper from "./components/Planner/ToDoWrapper.jsx";
 import SubscribersList from "./components/SiteAdmin/Dashboard/SubscribersList.jsx";
+import Reviews from "./components/Reviews/Reviews.jsx";
 
 
 function Main() {
@@ -106,6 +107,7 @@ function Main() {
         <Route path="planner" element={<ToDoWrapper />} />
         <Route path="portfolio" element={<Portfolio />} />
         <Route path="gallery" element={<Gallery />} />
+        <Route path="reviews" element={<Reviews />} />
       </Route>
     )
   );
