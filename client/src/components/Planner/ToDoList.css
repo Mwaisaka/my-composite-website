@@ -46,18 +46,20 @@ h1 {
 .todo-input-form {
   outline: none;
   background: #dad7e0;
-  border: 1px solid #8758ff;
-  padding: 0.5rem 1rem;
+  border: 5px solid #8758ff;
   margin-top: 1rem;
   margin-bottom: 2rem;
   width: 300px;  
   color: #000;
-  border-radius: 5px;
+  border-radius: 10px;
+  padding-left: 3rem;
 }
 
-.todo-input::placeholder {
-  color: #271213;
+.todo-input-form::placeholder {
+  color: #9d9a9a;
+  /* padding-left: 1.2rem; */
 }
+
 
 .todo-btn {
 
@@ -78,10 +80,11 @@ h1 {
   align-items: center;
   background: #474352b2;
   color: #fff;
-  padding: 0.75rem 1rem;
+  padding: 0.0rem 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
   cursor: pointer;
+  width: 90%;
 }
 
 .fa-trash {
