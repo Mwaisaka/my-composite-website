@@ -178,7 +178,7 @@ function Reviews() {
                         </div>
 
                         <div className="col-lg-5 col-span-1">
-                            <h3 className="text-xl font-bold mb-2">User reviews:</h3>
+                            <h3 className="text-xl font-bold mb-2">User reviews [{submittedMessages.length}]:</h3>
                             {submittedMessages.length > 0 ? (
                                 <div className="bg-gray-100 p-4 rounded shadow-md">
                                     {currentReviews.map((entry, index) => (
