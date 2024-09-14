@@ -12,6 +12,7 @@ function ToDoForm({ addToDo }) {
     if (value.trim()) {
       //add todo
       addToDo(value);
+      alert("New task added successfully.");
 
       //clear form after submission
       setValue("");
@@ -23,29 +24,28 @@ function ToDoForm({ addToDo }) {
 
   return (
     <form onSubmit={handleSubmit} className="ToDo-Form gap-5">
-      <div className="relative w-[100%] flex items-center  rounded-lg px-0">
+      <div className="relative w-full flex items-center rounded-lg">
         {/* <span className="absolute left-2 top-1/2 transform -translate-y-5 text-gray-500">
         <CiCirclePlus size={24}/>
         </span> */}
-       
+
         <input
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           className="todo-input-form"
-          placeholder='Add a new task...'
-          
+          placeholder="Add a new task..."
         />
 
-        {error && <p className="text-red-600 absolute  left-0">{error}</p>}
+        <button
+          type="submit"
+          className="absolute uppercase right-1 top-10 transform -translate-y-1/2 hover:bg-orange-100 text-gray-500 font-bold py-1 px-3 rounded-md transition duration-300 ease-in-out"
+        >
+          Add
+        </button>
       </div>
 
-      <button
-        type="submit"
-        className="todo-btn bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out"
-      >
-        Add Task
-      </button>
+      {error && <p className="text-red-600  mt-">{error}</p>}
     </form>
   );
 }

@@ -38,7 +38,7 @@ h1 {
 
 .ToDo-Form {
     width: 90%;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: flex-start; 
       }
@@ -48,8 +48,8 @@ h1 {
   background: #dad7e0;
   border: 5px solid #8758ff;
   margin-top: 1rem;
-  margin-bottom: 2rem;
-  width: 300px;  
+  margin-bottom: 1rem;
+  width: 90%;  
   color: #000;
   border-radius: 10px;
   padding-left: 3rem;
