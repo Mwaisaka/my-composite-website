@@ -15,7 +15,10 @@ function ToDoWrapper() {
         ])
     };
 
-    const deleteTodo = (id) => setToDos(todos.filter((todo) => todo.id !== id));
+    const deleteTodo = (id) => {
+        setToDos(todos.filter((todo) => todo.id !== id))
+        alert('Task deleted successfully.');
+    };
 
     const toggleComplete = (id) => {
         setToDos(
@@ -44,7 +47,7 @@ function ToDoWrapper() {
     return (
 
         <div className="ToDoWrapper">
-            <h1>My Tasks</h1>
+            <h1>My Tasks [{todos.length}]</h1>
             <ToDoForm addToDo={addToDo} />
             {/* display todos */}
             {todos.map((todo) =>

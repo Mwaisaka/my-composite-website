@@ -9,6 +9,7 @@ function EditToDoForm({ editToDo, task }) {
     //edit todo
     editToDo(value, task.id);
     setValue("");
+    alert("Task edited and saved successfully.");
   };
   return (
     <form onSubmit={handleSubmit} className="ToDo-Form gap-5">
