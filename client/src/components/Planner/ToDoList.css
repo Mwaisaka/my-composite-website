@@ -34,6 +34,7 @@ h1 {
   max-width: 1400px;
   height: auto;
   margin-bottom: 2rem;
+  
 }
 
 .ToDo-Form {
@@ -41,17 +42,18 @@ h1 {
     /* display: flex; */
     align-items: center;
     justify-content: flex-start; 
+    width: 100% !important; 
       }
 
 .todo-input-form {
   outline: none;
   background: #dad7e0;
-  border: 5px solid #8758ff;
+  border: 2px solid #f8f6f6eb !important;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 90%;  
+  width: 100% !important;  
   color: #000;
-  border-radius: 10px;
+  border-radius: 8px !important;
   padding-left: 3rem;
 }
 
@@ -83,8 +85,9 @@ h1 {
   padding: 0.0rem 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
+  margin-left: 20px;
   cursor: pointer;
-  width: 90%;
+  width: 95%;
 }
 
 .fa-trash {

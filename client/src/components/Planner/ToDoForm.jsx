@@ -10,21 +10,31 @@ function ToDoForm({ addToDo }) {
     e.preventDefault();
 
     if (value.trim()) {
-      //add todo
-      addToDo(value);
-      alert("New task added successfully.");
+      //Ask the user for confirmation before adding the task
+      const confirmAdd = window.confirm("Do you want to add this new task?");
 
-      //clear form after submission
-      setValue("");
-      setError("");
+      if (confirmAdd) {
+        //If user confirms, add the task
+        addToDo(value);
+        alert("New task added successfully.");
+
+        //clear form after submission
+        setValue("");
+        setError("");
+      } else {
+        //If user cancels, do not add the task and return
+        alert("Task addition cancelled.");
+        setValue("");
+        setError("");
+      }
     } else {
       setError("Please enter a task in the above field.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="ToDo-Form gap-5">
-      <div className="relative w-full flex items-center rounded-lg">
+    <form onSubmit={handleSubmit} className="ToDo-Form gap-5 mb-5">
+      <div className="relative w-[100%] flex items-center rounded-lg">
         {/* <span className="absolute left-2 top-1/2 transform -translate-y-5 text-gray-500">
         <CiCirclePlus size={24}/>
         </span> */}
@@ -33,7 +43,7 @@ function ToDoForm({ addToDo }) {
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="todo-input-form"
+          className="todo-input-form "
           placeholder="Add a new task..."
         />
 
