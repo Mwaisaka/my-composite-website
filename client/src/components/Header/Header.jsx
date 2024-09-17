@@ -149,7 +149,7 @@ export default function Header() {
                     lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                   }
                 >
-                  Reviews
+                  Testimonials
                 </NavLink>
               </li>
               <li>

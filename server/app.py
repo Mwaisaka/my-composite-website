@@ -5,7 +5,8 @@ from flask_restful import Resource, reqparse
 from sqlalchemy.exc import IntegrityError
 from flask_cors import CORS
 from config import app, db, api, cors
-from models import User, Department, Accounting, UserDepartment, Salary, Job, Registration, Subscriber
+from models import User, Department, Accounting, UserDepartment, Salary, Job, Registration, Subscriber, Testimonial
+from datetime import datetime
 
 
 @app.route("/")
@@ -337,7 +338,19 @@ class Subscribers(Resource):
         
         return make_response(jsonify(subscribers), 200)
         
-        
+class Testimonials(Resource):
+    def get(self):
+        testimonials = []
+        for testimonial in Testimonial.query.all():
+            testimonial_dict ={
+                "id": testimonial.id,
+                "name": testimonial.name,
+                "message": testimonial.message,
+                "date_time": testimonial.date_time
+            }
+            testimonials.append(testimonial_dict)
+        return make_response(jsonify(testimonials), 200)
+            
 class Jobs(Resource):
     def get(self):
         jobs = []
@@ -451,6 +464,46 @@ class ResetPassword(Resource):
             db.session.rollback()
             return {"message": "Failed to reset password."}, 500
 
+class TestimonialAdd(Resource):
+    def post(self):
+        #Get JSON data from request
+        json_data = request.get_json()
+        
+        #Validate JSON data
+        if not json_data:
+            return {"message": "Request body is empty."}, 400
+        
+        #Validate required fields
+        required_fields = ["name", "message"]
+        for field in required_fields:
+            if field not in json_data or not json_data[field]:
+                return {"message": f"Field '{field}' is required"}, 400
+        
+        try:
+            # Get the current date and time
+            current_datetime = datetime.now()
+            
+            #Create a new testimonial
+            testimonial = Testimonial(
+                name = json_data["name"],
+                message = json_data["message"],
+                date_time = current_datetime
+            )
+            
+            #Add and commit the new testimonial to the database
+            db.session.add(testimonial)
+            db.session.commit()
+            
+            #Return the testimonial data in JSON format
+            return testimonial.to_dict(),201
+        
+        except IntegrityError:
+            db.session.rollback()
+            return {"message": "Error occured while adding the testimonial."}, 409
+        
+        except Exception as e:
+            db.session.rollback()
+            return {"message" : str(e)}, 500
 
 api.add_resource(Login, "/login", endpoint="login")
 api.add_resource(Signup, "/signup", endpoint="signup")
@@ -468,6 +521,8 @@ api.add_resource(Registrations, "/registrations", endpoint="registrations")
 api.add_resource(Subscribers, "/subscribers", endpoint="subscribers")
 api.add_resource(Subscribe, "/subscribe", endpoint="subscribe")
 api.add_resource(SiteAdmin, "/siteadmin/<int:id>", endpoint="siteadmin")
+api.add_resource(TestimonialAdd, "/testimonial", endpoint="testimonial")
+api.add_resource(Testimonials, "/testimonials", endpoint="testimonials")
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)

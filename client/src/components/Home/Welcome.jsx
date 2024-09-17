@@ -15,18 +15,20 @@ function Welcome() {
     >
       <div className="rounded overflow-hidden shadow-lg">
         <div className="px-6 py-4">
-          <div className="font-bold text-3xl mb-2 ">
+          <div className="text-2xl mb-2 ">
             <h3>
-              I am a Fullstack Web Developer <br />
+              Hello!
+              <br />I am <strong className="text-4xl">Frank Mwaisaka</strong>,
+              <br />
+              a Fullstack Web Developer. <br />
               <hr
-              class="border-t-2 border-red-700  mb-2 py-3"
-              style={{ width: "15%", margin: "15px auto" ,
-                marginLeft: "0px", }}
-            />
+                class="border-t-2 border-red-700  mb-2 py-"
+                style={{ width: "15%", margin: "15px auto", marginLeft: "0px" }}
+              />
             </h3>
           </div>
           <p className="text-gray-700 text-base">
-            I specialize in full-stack development, leveraging my creativity and
+            I specialize in full-stack web development, leveraging my creativity and
             technical knowledge to craft visually appealing user interfaces that
             provide exceptional user experiences through interaction with the
             backend. When I'm not coding, I enjoy traveling and meeting new

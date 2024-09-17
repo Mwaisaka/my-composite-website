@@ -5,7 +5,7 @@ from random import randint, choice as rc, random, sample,uniform
 from faker import Faker
 
 from app import app
-from models import db, User, Department, Accounting, UserDepartment, Salary, Job, Subscriber
+from models import db, User, Department, Accounting, UserDepartment, Salary, Job, Subscriber, Testimonial
 
 fake = Faker()
 
@@ -16,6 +16,8 @@ with app.app_context():
     UserDepartment.query.delete()
     Job.query.delete()
     Subscriber.query.delete()
+    Testimonial.query.delete()
+    # User.query.delete()
 
     fake = Faker()
 

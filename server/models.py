@@ -6,6 +6,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 
+
 from config import db, bcrypt
 
 class User(db.Model, SerializerMixin):
@@ -177,3 +178,22 @@ class Subscriber(db.Model, SerializerMixin):
             "id": self.id,
             "email": self.email,
         }
+        
+class Testimonial(db.Model, SerializerMixin):
+    __tablename__ = 'testimonials'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    message = db.Column(db.String(255), nullable=False)
+    date_time = db.Column(db.DateTime)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "message": self.message,
+            "date_time": self.date_time.strftime("%Y-%m-%d %H:%M:%S") if self.date_time else None
+        }
+    
+    def __repr__ (self):
+        return f'<Testimonial name={self.name} message={self.message} date={self.date}>'
