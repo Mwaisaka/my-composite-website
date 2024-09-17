@@ -21,50 +21,50 @@ with app.app_context():
 
     fake = Faker()
 
-    print("Creating users...")
+    # print("Creating users...")
 
-    # make sure users have unique usernames
-    # User roles with a more realistic distribution
-    user_roles = [('student', 80), ('teacher', 15), ('admin', 5)]
-    users = []
-    fullnames = []
-    usernames = []
+    # # make sure users have unique usernames
+    # # User roles with a more realistic distribution
+    # user_roles = [('student', 80), ('teacher', 15), ('admin', 5)]
+    # users = []
+    # fullnames = []
+    # usernames = []
 
-    for role, percentage in user_roles:
-        num_users = int(percentage * 20 / 100)  # Calculate number of users per role
-        for i in range(num_users):
-            fullname = fake.name()
-            while fullname in fullnames:
-                fullname = fake.name()
-            fullnames.append(fullname)
+    # for role, percentage in user_roles:
+    #     num_users = int(percentage * 20 / 100)  # Calculate number of users per role
+    #     for i in range(num_users):
+    #         fullname = fake.name()
+    #         while fullname in fullnames:
+    #             fullname = fake.name()
+    #         fullnames.append(fullname)
 
-            username = fake.first_name()
-            while username in usernames:
-                username = fake.first_name()
-            usernames.append(username)
+    #         username = fake.first_name()
+    #         while username in usernames:
+    #             username = fake.first_name()
+    #         usernames.append(username)
 
-            # Generate age based on user role
-            if role == 'student':
-                age = randint(5, 17)  # Age range for students (5-17)
-            else:
-                age = randint(18, 65)  # for teachers and admins
+    #         # Generate age based on user role
+    #         if role == 'student':
+    #             age = randint(5, 17)  # Age range for students (5-17)
+    #         else:
+    #             age = randint(18, 65)  # for teachers and admins
 
-            user = User(
-                fullname=fullname,
-                username=username,
-                age=age,
-                gender=fake.random_element(elements=('Male', 'Female')),
-                bio=fake.paragraph(nb_sentences=3),
-                image_url=fake.url(),
-                role=role
-                # email=fake.email()  # Add email address
-            )
+    #         user = User(
+    #             fullname=fullname,
+    #             username=username,
+    #             age=age,
+    #             gender=fake.random_element(elements=('Male', 'Female')),
+    #             bio=fake.paragraph(nb_sentences=3),
+    #             image_url=fake.url(),
+    #             role=role
+    #             # email=fake.email()  # Add email address
+    #         )
 
-            user.password_hash = user.username + 'password'
-            users.append(user)
+    #         user.password_hash = user.username + 'password'
+    #         users.append(user)
 
-    db.session.add_all(users)
-    db.session.commit()  # Commit users before creating relationships # Commit users before creating relationships
+    # db.session.add_all(users)
+    # db.session.commit()  # Commit users before creating relationships # Commit users before creating relationships
 
     print("Creating Departments...")
 
