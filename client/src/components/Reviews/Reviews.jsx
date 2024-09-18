@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "../ContactUs/ContactUs.css";
 
 function Reviews() {
@@ -9,8 +9,10 @@ function Reviews() {
 
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [submittedMessages, setSubmittedMessages] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
   const [page, setPage] = useState(1);
+  const [error, setError] = useState(null);
+  
 
   function updateCharacterCount() {
     if (textareaRef.current && charCountRef.current) {
@@ -20,17 +22,36 @@ function Reviews() {
       } characters remaining.`;
     }
   }
+
+  useEffect(() =>{
+    fetch("http://127.0.0.1:5555/testimonials")
+    .then((res)=>res.json())
+    .then(setTestimonials)
+  },[testimonials]);
+
   function handleSubmit(e) {
     e.preventDefault();
 
+    setError(null);// Reset error state
+
     if (name.trim() && message.trim()) {
       // Get the current date and time
-      const timestamp = new Date().toLocaleString();
-
-      // Add new message to the submittedMessages array
-      setSubmittedMessages((prevMessages) => [
+    const date_time = new Date().toLocaleString();
+    
+      fetch("http://127.0.0.1:5555/testimonial",{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({name : name, message: message, date_time: date_time})
+      })
+      .then((response)=>{
+        return response.json();
+      })
+      // Add new message to the testimonials array
+      setTestimonials((prevMessages) => [
         ...prevMessages,
-        { name, message, timestamp },
+        { name, message, date_time },
       ]);
 
       // Clear form fields after submission
@@ -40,7 +61,7 @@ function Reviews() {
       // confirm if message was submitted
       console.log("name:", name);
       console.log("message:", message);
-      console.log("timestamp:", timestamp);
+      console.log("date_time:", date_time);
     } else {
       // show error message
       console.log("Please fill in all fields");
@@ -48,12 +69,12 @@ function Reviews() {
   }
 
   //Calculate the total page numbers
-  const totalPages = Math.ceil(submittedMessages.length / reviewsPerPage);
+  const totalPages = Math.ceil(testimonials.length / reviewsPerPage);
 
   // Determine the reviews to display on the current page
   const startIndex = (page - 1) * reviewsPerPage;
   const endIndex = startIndex + reviewsPerPage;
-  const currentReviews = submittedMessages
+  const currentReviews = testimonials
     .slice()
     .reverse()
     .slice(startIndex, endIndex);
@@ -190,14 +211,14 @@ function Reviews() {
 
             <div className="col-lg-5 col-span-1">
               <h3 className="text-xl font-bold mb-2">
-                User reviews [{submittedMessages.length}]:
+                User reviews [{testimonials.length}]:
               </h3>
-              {submittedMessages.length > 0 ? (
-                <div className="bg-gray-100 p-4 rounded shadow-md">
+              {testimonials.length > 0 ? (
+                <div className="bg-gray-100 p-3 rounded shadow-md">
                   {currentReviews.map((entry, index) => (
                     <div
                       key={index}
-                      className="bg-white p-4 rounded-lg shadow-md mb-2 border border-gray-300"
+                      className="bg-white p-1 rounded-lg shadow-md mb-1 border border-gray-300"
                       style={{
                         wordWrap: "break-word", // Ensures words are broken at boundaries
                         overflowWrap: "break-word", // Prevents overflow and wraps long words
@@ -210,7 +231,7 @@ function Reviews() {
                         <strong>Message:</strong> {entry.message}
                       </p>
                       <p className="text-sm text-gray-500">
-                        <strong>Date:</strong> {entry.timestamp}
+                        <strong>Date:</strong> {entry.date_time}
                       </p>
                     </div>
                   ))}

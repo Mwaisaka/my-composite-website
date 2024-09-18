@@ -2,29 +2,52 @@ import React, { useState } from "react";
 // import { CiCirclePlus } from "react-icons/ci";
 
 function ToDoForm({ addToDo }) {
-  const [value, setValue] = useState("");
+  const [task, setTask] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     //prevent default
     e.preventDefault();
 
-    if (value.trim()) {
+    fetch("http://127.0.0.1:5555/addtask",{
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({task : task})
+    })
+    .then((response)=>{
+      if(!response.ok){
+        return response.json().then((errorData) => {
+          throw new Error(errorData.message);
+        });
+      }
+      return response.json();
+    })
+    .then((data)=>{
+      console.log("Task added: ",data);
+    })
+    .catch((error) => {
+      console.log("Error: ",error.message);
+      setError("Failed to add task: ",error.message);
+    });
+
+    if (task.trim()) {
       //Ask the user for confirmation before adding the task
       const confirmAdd = window.confirm("Do you want to add this new task?");
 
       if (confirmAdd) {
-        //If user confirms, add the task
-        addToDo(value);
+        //If user confirms, add the task    
+        addToDo(task);
         alert("New task added successfully.");
 
         //clear form after submission
-        setValue("");
+        setTask("");
         setError("");
       } else {
         //If user cancels, do not add the task and return
         alert("Task addition cancelled.");
-        setValue("");
+        setTask("");
         setError("");
       }
     } else {
@@ -41,8 +64,8 @@ function ToDoForm({ addToDo }) {
 
         <input
           type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
           className="todo-input-form "
           placeholder="Add a new task..."
         />

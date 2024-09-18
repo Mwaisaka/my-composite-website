@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ToDoForm from "./ToDoForm";
 import { v4 as uuidv4 } from "uuid";
 import EditToDoForm from "./EditToDoForm";
@@ -7,6 +7,12 @@ import "./ToDoList.css";
 
 function ToDoWrapper() {
   const [todos, setToDos] = useState([]);
+
+  useEffect(() =>{
+    fetch("http://127.0.0.1:5555/tasks")
+    .then((res)=>res.json())
+    .then(setToDos)
+  },[]);
 
   const addToDo = (todo) => {
     setToDos([

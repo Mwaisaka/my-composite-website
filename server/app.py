@@ -5,7 +5,7 @@ from flask_restful import Resource, reqparse
 from sqlalchemy.exc import IntegrityError
 from flask_cors import CORS
 from config import app, db, api, cors
-from models import User, Department, Accounting, UserDepartment, Salary, Job, Registration, Subscriber, Testimonial
+from models import User, Department, Accounting, UserDepartment, Salary, Job, Registration, Subscriber, Testimonial, Task
 from datetime import datetime
 
 
@@ -505,6 +505,51 @@ class TestimonialAdd(Resource):
             db.session.rollback()
             return {"message" : str(e)}, 500
 
+class AddTask(Resource):
+    def post(self):
+        json = request.get_json()
+        if not json:
+            return {"message": "Request body is empty."}, 400
+
+        # Validate required fields
+        required_fields = ["task"]
+        for field in required_fields:
+            if field not in json or not json[field]:
+                return {"message": f"Field '{field}' is required."}, 400
+
+        # Check if the task already exists
+        existing_task = Task.query.filter_by(task=json["task"]).first()
+        if existing_task:
+            return {"message": "Task already exists."}, 500
+
+        try:
+            task = Task(
+                task=json["task"],
+            )
+
+            db.session.add(task)
+            db.session.commit()
+            return task.to_dict(), 201
+
+        except IntegrityError as e:
+            db.session.rollback()
+            return {"message": "Task already exists."}, 409
+
+        except Exception as e:
+            db.session.rollback()
+            return {"message": str(e)}, 500
+
+class Tasks(Resource):
+    def get(self):
+        tasks = []
+        for task in Task.query.all():
+            task_dict ={
+                "id": task.id,
+                "task": task.task,
+            }
+            tasks.append(task_dict)
+        return make_response(jsonify(tasks), 200)
+
 api.add_resource(Login, "/login", endpoint="login")
 api.add_resource(Signup, "/signup", endpoint="signup")
 api.add_resource(CheckSession, "/check_session", endpoint="check_session")
@@ -523,6 +568,8 @@ api.add_resource(Subscribe, "/subscribe", endpoint="subscribe")
 api.add_resource(SiteAdmin, "/siteadmin/<int:id>", endpoint="siteadmin")
 api.add_resource(TestimonialAdd, "/testimonial", endpoint="testimonial")
 api.add_resource(Testimonials, "/testimonials", endpoint="testimonials")
+api.add_resource(AddTask, "/addtask", endpoint="addtask")
+api.add_resource(Tasks, "/tasks", endpoint="tasks")
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)

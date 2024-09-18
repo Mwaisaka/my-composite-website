@@ -192,8 +192,23 @@ class Testimonial(db.Model, SerializerMixin):
             "id": self.id,
             "name": self.name,
             "message": self.message,
-            "date_time": self.date_time.strftime("%Y-%m-%d %H:%M:%S") if self.date_time else None
+            "date_time": self.date_time.Date().toLocaleString() if self.date_time else None
         }
     
     def __repr__ (self):
         return f'<Testimonial name={self.name} message={self.message} date={self.date}>'
+    
+class Task(db.Model, SerializerMixin):
+    __tablename__ = 'tasks'	
+    
+    id = db.Column(db.Integer, primary_key=True)
+    task = db.Column(db.String(255), nullable=False)
+    
+    def __repr__(self):
+        return f'<Subscriber {self.task}>'
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "task": self.task,
+        }
