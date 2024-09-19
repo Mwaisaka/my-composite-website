@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Clock from "../Clock/Clock";
 
 import SoftDev from "../Images/SoftDev.jpg";
 
@@ -18,6 +19,12 @@ export default function Footer() {
               />
             </Link>
           </div>
+          <div className="flex justify-center items-center h-[10%]  mt-10 ml-6">
+            <div className="w-40 h-10 border border-black rounded-lg flex justify-center items-center shadow-lg bg-gray-200 text-2xl italic">
+              <Clock />
+            </div>
+          </div>
+
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">

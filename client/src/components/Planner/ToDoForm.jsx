@@ -9,41 +9,43 @@ function ToDoForm({ addToDo }) {
     //prevent default
     e.preventDefault();
 
-    fetch("http://127.0.0.1:5555/addtask",{
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({task : task})
-    })
-    .then((response)=>{
-      if(!response.ok){
-        return response.json().then((errorData) => {
-          throw new Error(errorData.message);
-        });
-      }
-      return response.json();
-    })
-    .then((data)=>{
-      console.log("Task added: ",data);
-    })
-    .catch((error) => {
-      console.log("Error: ",error.message);
-      setError("Failed to add task: ",error.message);
-    });
-
     if (task.trim()) {
       //Ask the user for confirmation before adding the task
       const confirmAdd = window.confirm("Do you want to add this new task?");
 
       if (confirmAdd) {
-        //If user confirms, add the task    
-        addToDo(task);
-        alert("New task added successfully.");
+        //If user confirms, add the task
 
-        //clear form after submission
-        setTask("");
-        setError("");
+        fetch("http://127.0.0.1:5555/addtask", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ task: task }),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              return response.json().then((errorData) => {
+                throw new Error(errorData.message);
+              });
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Task added: ", data);
+            alert("New task added successfully.");
+
+            //Add task to the local list
+            addToDo(task);
+
+            //clear form after submission
+            setTask("");
+            setError("");
+          })
+          .catch((error) => {
+            console.log("Error: ", error.message);
+            setError("Failed to add task: ", error.message);
+          });
       } else {
         //If user cancels, do not add the task and return
         alert("Task addition cancelled.");

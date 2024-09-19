@@ -8,11 +8,11 @@ import "./ToDoList.css";
 function ToDoWrapper() {
   const [todos, setToDos] = useState([]);
 
-  useEffect(() =>{
+  useEffect(() => {
     fetch("http://127.0.0.1:5555/tasks")
-    .then((res)=>res.json())
-    .then(setToDos)
-  },[]);
+      .then((res) => res.json())
+      .then(setToDos);
+  }, []);
 
   const addToDo = (todo) => {
     setToDos([
@@ -21,9 +21,32 @@ function ToDoWrapper() {
     ]);
   };
 
-  const deleteTodo = (id) => {
-    setToDos(todos.filter((todo) => todo.id !== id));
-    alert("Task deleted successfully.");
+  const deleteTodo = async (id) => {
+    //Ask for the user confirmation before deleting the task
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this task?"
+    );
+
+    if (confirmDelete) {
+      try {
+        const response = await fetch(`http://127.0.0.1:5555/tasks/${id}`, {
+          method: "DELETE",
+        });
+        if (response.ok) {
+          setToDos(todos.filter((todo) => todo.id !== id));
+          alert("Task deleted successfully");
+        }
+        if (response.status === 404) {
+          throw new Error("Task not found");
+        }
+      } catch (err) {
+        console.log(err.message);
+        alert(err.message);
+      }
+    } else {
+      //If the user cancels the deletion, do nothing
+      alert("Task deletion cancelled.");
+    }
   };
 
   const toggleComplete = (id) => {
@@ -65,7 +88,12 @@ function ToDoWrapper() {
         <div className="bg-gray-400 w-[100%] py-2 border rounded-lg">
           <div className="flex items-center justify-between w-[95%] mb-4 ml-4 text-xl">
             <h3>Tasks Left [{tasksLeftCount}]</h3>
-            <button className="transform transition duration-300 ease-in-out hover:scale-110" onClick={clearTasks}>Clear all tasks</button>
+            <button
+              className="transform transition duration-300 ease-in-out hover:scale-110"
+              onClick={clearTasks}
+            >
+              Clear all tasks
+            </button>
           </div>
 
           {todos.map((todo) =>

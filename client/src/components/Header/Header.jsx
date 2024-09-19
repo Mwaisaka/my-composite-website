@@ -9,12 +9,14 @@ export default function Header() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-  const toggleSchoolDropdown = () => setSchoolDropdownOpen(!isSchoolDropdownOpen);
-  const toggleSupportDropdown = () => setSupportDropdownOpen(!isSupportDropdownOpen);
+  const toggleSchoolDropdown = () =>
+    setSchoolDropdownOpen(!isSchoolDropdownOpen);
+  const toggleSupportDropdown = () =>
+    setSupportDropdownOpen(!isSupportDropdownOpen);
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className="shadow-none sticky z-50 top-0">
+    <header className="shadow-none sticky z-50 top-2">
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 w-full">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link to="/" className="flex items-center">

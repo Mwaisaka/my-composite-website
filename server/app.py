@@ -550,6 +550,18 @@ class Tasks(Resource):
             tasks.append(task_dict)
         return make_response(jsonify(tasks), 200)
 
+    def delete(self, id):        
+
+        entity = Task.query.filter_by(id=id).first()
+        if entity:            
+            db.session.delete(entity)
+            db.session.commit()
+            return {
+                "message": "Task deleted successfully."
+            }, 200            
+        else:
+            return {"error": "Task not found"}, 404 
+        
 api.add_resource(Login, "/login", endpoint="login")
 api.add_resource(Signup, "/signup", endpoint="signup")
 api.add_resource(CheckSession, "/check_session", endpoint="check_session")
@@ -569,7 +581,7 @@ api.add_resource(SiteAdmin, "/siteadmin/<int:id>", endpoint="siteadmin")
 api.add_resource(TestimonialAdd, "/testimonial", endpoint="testimonial")
 api.add_resource(Testimonials, "/testimonials", endpoint="testimonials")
 api.add_resource(AddTask, "/addtask", endpoint="addtask")
-api.add_resource(Tasks, "/tasks", endpoint="tasks")
+api.add_resource(Tasks, "/tasks","/tasks/<int:id>", endpoint="tasks")
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
