@@ -38,6 +38,12 @@ $ npm start --prefix client
 #### Subscribers: 
 Shows the list of subscribers
 
+#### Tasks: 
+Shows the list of tasks
+
+#### Testimonials: 
+Shows the list of user testimonials
+
 
 
 
