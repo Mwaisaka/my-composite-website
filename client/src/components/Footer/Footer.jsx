@@ -20,7 +20,7 @@ export default function Footer() {
             </Link>
           </div>
           <div className="flex justify-center items-center h-[10%]  mt-10 ml-6">
-            <div className="w-40 h-10 border border-black rounded-lg flex justify-center items-center shadow-lg bg-gray-200 text-2xl italic">
+            <div className="w-40 h-10 border border-black border-double hover:border-dotted border-4 rounded-lg flex justify-center items-center shadow-lg bg-gray-200 text-2xl italic">
               <Clock />
             </div>
           </div>

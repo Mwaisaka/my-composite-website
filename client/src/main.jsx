@@ -21,6 +21,7 @@ import AdmissionPage from "./components/admissions/admissions.jsx";
 import Portfolio from "./components/Portfolio/Portfolio.jsx";
 import Gallery from "./components/Portfolio/Gallery.jsx";
 import Clock from "./components/Clock/Clock.jsx";
+import Weather from "./components/Weather/Weather.jsx";
 
 // import JobsList from "./components/Jobs/Jobs.jsx";
 import AccountingRecords from "./components/Dashboard/Accounts/AccountRecords.jsx";
@@ -110,6 +111,7 @@ function Main() {
         <Route path="gallery" element={<Gallery />} />
         <Route path="reviews" element={<Reviews />} />
         <Route path="clock" element={<Clock />}/>
+        <Route path="weather" element={<Weather />} />
       </Route>
     )
   );

@@ -3,14 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import SoftDev from "../Images/SoftDev.jpg";
 
 export default function Header() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isSchoolDropdownOpen, setSchoolDropdownOpen] = useState(false);
+  // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // const [isSchoolDropdownOpen, setSchoolDropdownOpen] = useState(false);
   const [isSupportDropdownOpen, setSupportDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-  const toggleSchoolDropdown = () =>
-    setSchoolDropdownOpen(!isSchoolDropdownOpen);
   const toggleSupportDropdown = () =>
     setSupportDropdownOpen(!isSupportDropdownOpen);
   const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
@@ -92,14 +89,14 @@ export default function Header() {
               <li>
                 <div
                   className="relative dropdown px-3"
-                  onMouseEnter={toggleSupportDropdown}
-                  onMouseLeave={toggleSupportDropdown}
+                  onMouseEnter={() => setSupportDropdownOpen(true)}
+                  onMouseLeave={() => setSupportDropdownOpen(false)}
                 >
                   <span className="block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0 cursor-pointer">
                     Portfolio
                   </span>
                   {isSupportDropdownOpen && (
-                    <ul className="absolute bg-white pt-2 border border-gray-200 dropdown">
+                    <ul className="absolute bg-white pt-2 border border-gray-200 dropdown z-10">
                       <li>
                         <NavLink
                           to="/portfolio"
@@ -152,6 +149,18 @@ export default function Header() {
                   }
                 >
                   Testimonials
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/weather"
+                  className={({ isActive }) =>
+                    `block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 
+                    ${isActive ? "text-orange-500" : "text-gray-700"} 
+                    lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                  }
+                >
+                  Weather
                 </NavLink>
               </li>
               <li>

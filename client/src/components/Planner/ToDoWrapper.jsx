@@ -86,7 +86,7 @@ function ToDoWrapper() {
         <ToDoForm addToDo={addToDo} />
         {/* display todos */}
         <div className="bg-gray-400 w-[100%] py-2 border rounded-lg">
-          <div className="flex items-center justify-between w-[95%] mb-4 ml-4 text-xl">
+          <div className="flex items-center justify-between w-[95%] mb-4 ml-3 text-xl">
             <h3>Tasks Left [{tasksLeftCount}]</h3>
             <button
               className="transform transition duration-300 ease-in-out hover:scale-110"
