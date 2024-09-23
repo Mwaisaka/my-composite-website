@@ -20,7 +20,7 @@ function Portfolio() {
   }, []);
 
   return (
-    <div  style={{ display: "flex", justifyContent: "center", padding: "10px" }}>
+    <div  className="animate-swipeUp" style={{ display: "flex", justifyContent: "center", padding: "10px" }}>
       <div  style={{
         height: "auto",
         marginBottom: "20px",

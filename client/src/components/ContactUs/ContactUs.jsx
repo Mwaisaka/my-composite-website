@@ -18,7 +18,7 @@ function ContactUs() {
   }
 
   return (
-    <div className="w-full m-auto pt-3 max-w-none" >
+    <div className="animate-swipeUp w-full m-auto pt-3 max-w-none" >
       <div className="rounded overflow-hidden shadow-none px-6 py-3" style={{
         marginBottom: "10px",
         marginTop: "20px",

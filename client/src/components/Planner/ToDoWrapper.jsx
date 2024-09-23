@@ -80,7 +80,7 @@ function ToDoWrapper() {
   const tasksLeftCount = todos.filter((todo) => !todo.completed).length;
 
   return (
-    <div className="ToDoWrapper ">
+    <div className="ToDoWrapper animate-swipeUp">
       <div>
         <h1 className="font-bold">MY TASKS</h1>
         <ToDoForm addToDo={addToDo} />

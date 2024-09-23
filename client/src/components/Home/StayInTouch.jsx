@@ -9,7 +9,6 @@ function Contact() {
   const [error, setError] = useState(null);
   const [refreshPage, setRefreshPage] = useState(false);
 
-
   const handleSubscribe = (e) => {
     e.preventDefault();
 
@@ -23,36 +22,37 @@ function Contact() {
 
     setIsSending(true);
 
-    fetch("http://127.0.0.1:5555/subscribe",{
+    fetch("http://127.0.0.1:5555/subscribe", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({email: email}),
+      body: JSON.stringify({ email: email }),
     })
-    .then((response) => {
-      if(response.status===500){
-        throw new Error("Email already exists.");
-      }      
-      return response.json();
-    })
-    .then(() => {
-      setMessage("Thanks for contacting us! We will be in touch with you soon.");
-      setEmail("");
-      setIsValidEmail(false); // Reset the email validity
-    })
-    .catch((error)=>{
-      if (error.message === "Email already exists.") {
-        setError("Email already exists. Please enter a different email.");
-      } else {
-        setError("An error occurred while subscribing. Please try again.");
-      }
-    })
-    .finally(() => {
-      setIsSending(false); // Reset sending state
-    });
-};
-
+      .then((response) => {
+        if (response.status === 500) {
+          throw new Error("Email already exists.");
+        }
+        return response.json();
+      })
+      .then(() => {
+        setMessage(
+          "Thanks for contacting us! We will be in touch with you soon."
+        );
+        setEmail("");
+        setIsValidEmail(false); // Reset the email validity
+      })
+      .catch((error) => {
+        if (error.message === "Email already exists.") {
+          setError("Email already exists. Please enter a different email.");
+        } else {
+          setError("An error occurred while subscribing. Please try again.");
+        }
+      })
+      .finally(() => {
+        setIsSending(false); // Reset sending state
+      });
+  };
 
   const validateEmail = (email) => {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -85,8 +85,9 @@ function Contact() {
     >
       <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
         Stay In Touch
-        <h3 className="text-2xl font-normal text-gray-800 mt-4 mb-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <h3 className="text-base md:text-xl font-normal text-gray-800 mt-4 mb-8">
+          I'm happy to connect, listen and help. Let's work together and build
+          something awesome. Let's turn your idea to an even greater product.
           <hr
             className="border-t-2 border-red-700 mb-2"
             style={{ width: "25%", margin: "15px auto" }}

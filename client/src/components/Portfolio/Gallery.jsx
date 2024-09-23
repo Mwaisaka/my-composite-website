@@ -13,7 +13,7 @@ import gallery9 from "../Images/gallery9.png";
 function Gallery() {
   return (
     <div
-      className="rounded overflow-hidden shadow-none px-6 py-4"
+      className="animate-swipeUp rounded overflow-hidden shadow-none px-6 py-4"
       style={{
         marginBottom: "20px",
         marginTop: "20px",
