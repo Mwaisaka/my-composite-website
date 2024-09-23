@@ -13,30 +13,32 @@ function Welcome() {
         marginTop: "40px",
       }}
     >
-      <div className="rounded overflow-hidden shadow-lg">
+      <div className="rounded overflow-hidden shadow-none">
         <div className="px-6 py-4">
           <div className="text-2xl mb-2 ">
             <h3>
-              Hello!
+              Hello there!
               <br />I am <strong className="text-4xl">Frank Mwaisaka</strong>,
               <br />
               a Fullstack Web Developer. <br />
               <hr
-                class="border-t-2 border-red-700  mb-2 py-"
+                class="border-t-2 border-red-700  mb-2 "
                 style={{ width: "15%", margin: "15px auto", marginLeft: "0px" }}
               />
             </h3>
           </div>
-          <p className="text-gray-700 text-base">
-            I specialize in full-stack web development, leveraging my creativity and
-            technical knowledge to craft visually appealing user interfaces that
-            provide exceptional user experiences through interaction with the
-            backend. When I'm not coding, I enjoy traveling and meeting new
-            people to establish connections. I emphasize the importance of
-            approaching technology with empathy and a human touch, as I believe
-            this is what sets great developers apart. Welcome to my world 🌍,
-            where design 🎨 and humanity 👏🏾 meet to create amazing user
-            experiences!
+          <p className="text-gray-700 text-base text-justify">
+            I specialize in full-stack web development, leveraging my creativity
+            and technical knowledge to craft visually appealing user interfaces
+            that provide exceptional user experiences through interaction with
+            the backend.
+            <br />
+            <br />
+            My passion lies in tackling diverse challenges in the dynamic design landscape.
+            <br />
+            <br />
+            I value clarity, empathy, and integrity above all else. These
+            ideals guide my approach to problem solving and life in general.
           </p>
           <a
             href="/about"
@@ -47,19 +49,22 @@ function Welcome() {
           <br />
           <br />
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #WebDevelopment
+            #FullStackWebDevelopment
           </span>
 
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            #DataVizualization
+            #WebScraping
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            #APIDevelopment
           </span>
         </div>
       </div>
       <div>
         <img
-          className="w-full h-full"
+          className="w-auto h-full mx-auto block transform transition duration-300 ease-in-out hover:scale-105"
           src={Profile1}
-          alt="Educational excursion"
+          alt="Profile Photo"
         />
       </div>
     </div>
