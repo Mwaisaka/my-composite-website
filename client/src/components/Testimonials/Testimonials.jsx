@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import "../ContactUs/ContactUs.css";
 
-function Reviews() {
+function Testimonials() {
   const textareaRef = useRef(null);
   const charCountRef = useRef(null);
   const maxLength = 40;
@@ -276,4 +276,4 @@ function Reviews() {
   );
 }
 
-export default Reviews;
+export default Testimonials;

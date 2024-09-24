@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import StayInTouch from "../Home/StayInTouch";
-import Reviews from "./Reviews";
+import Reviews from "../Testimonials/Reviews";
 import Skills from "./Skills";
 import Services from "../About/Services";
 import Experience from "./Experience";
 
 
 import AboutMe from "../Images/AboutMe.png";
+import Feedback from "../Testimonials/Feedback";
 
 export default function About() {
   
@@ -100,9 +101,9 @@ export default function About() {
         </div>
       </div>
       <Services />
-      <Experience />
-      <Reviews />
+      {/* <Experience /> */}
       <Skills />
+      <Feedback /> 
      
       <StayInTouch />
     </div>

@@ -1,40 +1,24 @@
 import React from "react";
 import Reviewer from "../Images/Reviewer.png";
 
-function Reviews() {
-  const experiences = [
-    {
-      author: "John Doe",
-      comment:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-    },
-    {
-      author: "John Smith",
-      comment:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-    },
-    {
-      author: "Samuel Scott",
-      comment:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-    },
-  ];
-
+function Reviews({reviews}) {   
+  
+  
   return (
     <div
-      className="rounded overflow-hidden shadow-none px-6 py-1 bg-slate-50"
+      className="rounded overflow-hidden shadow-none px-6 py-1"
       style={{
         marginBottom: "20px",
         marginTop: "20px",
       }}
     >
-      <h2 className="text-3xl font-bold text-center text-gray-800 py-3">
+      <h2 className="text-3xl font-bold text-center text-gray-800 py-2">
         What My Clients Say
-        <h3 className="text-xl font-normal text-gray-800 mb-6 py-3">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <h3 className="text-xl font-normal text-gray-800 mb-0 py-3">
+          {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. */}
           <hr
-            className="border-t-2 border-red-700 mb-3"
-            style={{ width: "25%", margin: "15px auto" }}
+            className="border-t-2 border-red-700 mb-2"
+            style={{ width: "20%", margin: "15px auto" }}
           />
         </h3>
       </h2>
@@ -48,7 +32,7 @@ function Reviews() {
           marginTop: "10px",
         }}
       >
-        {experiences.map((experience, index) => {
+        {reviews?.map((testimonial, index) => {
           return (
             <div
               key={index}
@@ -65,7 +49,7 @@ function Reviews() {
                       alt="Reviewer"
                     />
                   </div>
-                  <div className="mt-5">{experience.comment}</div>
+                  <div className="mt-5">{testimonial.message}</div>
                 </p>
                 <div className="rounded overflow-hidden shadow-none px-6 py-2"></div>
               </div>
@@ -75,7 +59,7 @@ function Reviews() {
               />
               <div>
                 <p className="text-gray-800 text-base mb-3 text-center">
-                  {experience.author}
+                  {testimonial.name}
                 </p>
               </div>
             </div>
