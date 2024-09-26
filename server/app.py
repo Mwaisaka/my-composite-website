@@ -350,6 +350,18 @@ class Testimonials(Resource):
             }
             testimonials.append(testimonial_dict)
         return make_response(jsonify(testimonials), 200)
+    
+    def delete(self, id):        
+
+        entity = Testimonial.query.filter_by(id=id).first()
+        if entity:            
+            db.session.delete(entity)
+            db.session.commit()
+            return {
+                "message": "Testimonial deleted successfully."
+            }, 200            
+        else:
+            return {"error": "Testimonial not found"}, 404 
             
 class Jobs(Resource):
     def get(self):
@@ -579,7 +591,7 @@ api.add_resource(Subscribers, "/subscribers", endpoint="subscribers")
 api.add_resource(Subscribe, "/subscribe", endpoint="subscribe")
 api.add_resource(SiteAdmin, "/siteadmin/<int:id>", endpoint="siteadmin")
 api.add_resource(TestimonialAdd, "/testimonial", endpoint="testimonial")
-api.add_resource(Testimonials, "/testimonials", endpoint="testimonials")
+api.add_resource(Testimonials, "/testimonials", "/testimonials/<int:id>", endpoint="testimonials")
 api.add_resource(AddTask, "/addtask", endpoint="addtask")
 api.add_resource(Tasks, "/tasks","/tasks/<int:id>", endpoint="tasks")
 

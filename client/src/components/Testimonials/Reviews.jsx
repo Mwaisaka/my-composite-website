@@ -36,12 +36,12 @@ function Reviews({reviews}) {
           return (
             <div
               key={index}
-              className="rounded overflow-hidden shadow-none flex flex-col justify-between bg-gray-200"
+              className="rounded overflow-hidden shadow-none flex flex-col justify-between bg-gray-50"
               style={{ position: "relative" }}
             >
               <div className="px-6 py-1">
                 <p className="text-gray-800 text-base mb-1 mt-2 text-center">
-                  <div className="font-bold text-red-400 text-center text-3xl">
+                  <div className="font-bold text-red-400 text-center text-4xl">
                     "
                     <img
                       className="w-[25%] mx-auto border-4 border-red-400 rounded-full"

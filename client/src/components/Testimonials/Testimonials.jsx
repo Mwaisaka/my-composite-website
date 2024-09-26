@@ -4,7 +4,7 @@ import "../ContactUs/ContactUs.css";
 function Testimonials() {
   const textareaRef = useRef(null);
   const charCountRef = useRef(null);
-  const maxLength = 40;
+  const maxLength = 150;
   const reviewsPerPage = 3; // Limit to 4 reviews per page
 
   const [name, setName] = useState("");
@@ -12,22 +12,21 @@ function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
   const [page, setPage] = useState(1);
   const [error, setError] = useState(null);
-  
+
 
   function updateCharacterCount() {
     if (textareaRef.current && charCountRef.current) {
       var charCount = textareaRef.current.value.length;
-      charCountRef.current.textContent = `${
-        maxLength - charCount
-      } characters remaining.`;
+      charCountRef.current.textContent = `${maxLength - charCount
+        } characters remaining.`;
     }
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     fetch("http://127.0.0.1:5555/testimonials")
-    .then((res)=>res.json())
-    .then(setTestimonials)
-  },[testimonials]);
+      .then((res) => res.json())
+      .then(setTestimonials)
+  }, [testimonials]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -36,23 +35,24 @@ function Testimonials() {
 
     if (name.trim() && message.trim()) {
       // Get the current date and time
-    const date_time = new Date().toLocaleString();
-    
-      fetch("http://127.0.0.1:5555/testimonial",{
+      const date_time = new Date().toLocaleString();
+
+      fetch("http://127.0.0.1:5555/testimonial", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({name : name, message: message, date_time: date_time})
+        body: JSON.stringify({ name: name, message: message, date_time: date_time })
       })
-      .then((response)=>{
-        return response.json();
-      })
+        .then((response) => {
+          return response.json();
+        })
       // Add new message to the testimonials array
       setTestimonials((prevMessages) => [
         ...prevMessages,
         { name, message, date_time },
       ]);
+      alert("Feedback submitted successfully. Thank you!");
 
       // Clear form fields after submission
       setName("");
@@ -122,24 +122,20 @@ function Testimonials() {
   };
 
   return (
-    <div className="animate-swipeUp w-full m-auto pt-3 max-w-none">
+    <div className="animate-swipeUp w-auto pt-4 max-w-none">
       <div
-        className="rounded overflow-hidden shadow-none px-6 py-3"
-        style={{
-          marginBottom: "10px",
-          marginTop: "20px",
-        }}
+        className="rounded overflow-hidden shadow-none py-1"
       >
         <div className="row">
           <div
-            class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-7"
             style={{
               maxWidth: "1200px",
-              marginBottom: "10px",
               marginTop: "10px",
+              display: "flex",      // Enables flexbox for vertical centering
+              justifyContent: "center", // Centers horizontally (if needed within flex context)
             }}
           >
-            <div className="col-lg-7 col-span-2">
+            <div className="w-[60%] ">
               <div className="contact-from mt-1" style={{ padding: "10px" }}>
                 <div className="section-title">
                   <h2>Please share your feedback with us...</h2>
@@ -197,7 +193,7 @@ function Testimonials() {
                         <div className="singel-form">
                           <button
                             type="submit"
-                            className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 ease-in-out"
+                            className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 mb-8 rounded-md shadow-md transition duration-300 ease-in-out"
                           >
                             Submit
                           </button>
@@ -209,13 +205,13 @@ function Testimonials() {
               </div>
             </div>
 
-            <div className="col-lg-5 col-span-1">
+            {/* <div className="col-lg-5 col-span-1">
               <h3 className="text-xl font-bold mb-2">
                 User reviews [{testimonials.length}]:
-              </h3>
-              {testimonials.length > 0 ? (
-                <div className="bg-gray-100 p-3 rounded shadow-md">
-                  {currentReviews.map((entry, index) => (
+              </h3> */}
+            {/* {testimonials.length > 0 ? ( */}
+            {/* <div className="bg-gray-100 p-3 rounded shadow-md"> */}
+            {/* {currentReviews.map((entry, index) => (
                     <div
                       key={index}
                       className="bg-white p-1 rounded-lg shadow-md mb-1 border border-gray-300"
@@ -234,8 +230,8 @@ function Testimonials() {
                         <strong>Date:</strong> {entry.date_time}
                       </p>
                     </div>
-                  ))}
-                  <div>
+                  ))} */}
+            {/* <div>
                     <button
                       onClick={goToPreviousPage}
                       disabled={page === 1}
@@ -261,14 +257,15 @@ function Testimonials() {
                     >
                       Next
                     </button>
-                  </div>
-                </div>
-              ) : (
-                <div className="bg-gray p-4 rounded-lg shadow-md mb-1 border border-gray-300">
-                  <p>No feedback yet.</p>
-                </div>
-              )}
-            </div>
+                  </div> */}
+            {/* </div> */}
+            {/* // ) : (
+              //   <div className="bg-gray p-4 rounded-lg shadow-md mb-1 border border-gray-300">
+              //     <p>No feedback yet.</p>
+              //   </div>
+              // )} */}
+            {/* </div> */}
+            {/* </div> */}
           </div>
         </div>
       </div>

@@ -90,7 +90,7 @@ function Contact() {
           something awesome. Let's turn your idea to an even greater product.
           <hr
             className="border-t-2 border-red-700 mb-2"
-            style={{ width: "25%", margin: "15px auto" }}
+            style={{ width: "15%", margin: "15px auto" }}
           />
         </h3>
       </h2>
@@ -100,7 +100,7 @@ function Contact() {
           type="email"
           value={email}
           onChange={handleEmailChange}
-          placeholder="Enter your email address"
+          placeholder="Enter your email address to subscribe to my newsletters..."
           className="px-4 py-2 rounded-l-lg border border-gray-300 w-full max-w-lg"
         />
         <button

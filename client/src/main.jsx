@@ -44,6 +44,7 @@ import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import ToDoWrapper from "./components/Planner/ToDoWrapper.jsx";
 import SubscribersList from "./components/SiteAdmin/Dashboard/SubscribersList.jsx";
 import Testimonials from "./components/Testimonials/Testimonials.jsx";
+import EditTestimonials from "./components/Testimonials/EditTestimonials.jsx";
 
 
 function Main() {
@@ -112,6 +113,7 @@ function Main() {
         <Route path="testimonials" element={<Testimonials />} />
         <Route path="clock" element={<Clock />}/>
         <Route path="weather" element={<Weather />} />
+        <Route path="edittestimonials" element={<EditTestimonials />} />
       </Route>
     )
   );
