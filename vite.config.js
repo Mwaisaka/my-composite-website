@@ -38,5 +38,6 @@ export default defineConfig({
   build: {
     outDir: '../dist',  // Correct output directory
     emptyOutDir: true,  // Clear output directory before building
+    chunkSizeWarningLimit: 100000 // Set the chunk size warning limit to 100000 bytes (100 kB)
   },
 });
