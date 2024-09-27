@@ -22,6 +22,7 @@ export default defineConfig({
   },
   root: './client',
   build: {
+    outDir: '../dist',
     chunkSizeWarningLimit: 100000 // Set the chunk size warning limit to 100000 bytes (100 kB)
   }
 })
