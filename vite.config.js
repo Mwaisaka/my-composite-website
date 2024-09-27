@@ -10,20 +10,33 @@
 //   }
 // })
 
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+// import { defineConfig } from 'vite'
+// import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+// // https://vitejs.dev/config/
+// export default defineConfig({
+//   plugins: [react()],
+
+//   optimizeDeps:{
+//     exclude: ['react-icons']
+//   },
+//   root: './client',
+//   build: {
+//     outDir: '../dist',
+//     emptyOutDir: true,
+//     chunkSizeWarningLimit: 100000 // Set the chunk size warning limit to 100000 bytes (100 kB)
+//   }
+// })
+
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
 export default defineConfig({
-  plugins: [react()],
-
-  optimizeDeps:{
-    exclude: ['react-icons']
-  },
   root: './client',
+  plugins: [react()],
   build: {
-    outDir: '../dist',
-    emptyOutDir: true,
-    chunkSizeWarningLimit: 100000 // Set the chunk size warning limit to 100000 bytes (100 kB)
-  }
-})
+    outDir: '../dist',  // Correct output directory
+    emptyOutDir: true,  // Clear output directory before building
+  },
+});
