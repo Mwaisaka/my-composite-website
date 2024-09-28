@@ -26,7 +26,7 @@ function Testimonials() {
     fetch("http://127.0.0.1:5555/testimonials")
       .then((res) => res.json())
       .then(setTestimonials)
-  }, [testimonials]);
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();

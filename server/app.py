@@ -22,6 +22,14 @@ def staticfiles(path):
         return send_from_directory(os.path.join(BASEPATH,"static/assets"),path)
     else:
         return send_file(os.path.join(BASEPATH, "static/index.html"))
+
+@app.route("/<path:path>")
+def static_files(path):
+    print(f"Requested path: {path}")
+    if os.path.exists(os.path.join(BASEPATH, "assets", path)):
+        return send_from_directory(os.path.join(BASEPATH, "assets"), path)
+    else:
+        return send_file(os.path.join(BASEPATH, "static/index.html")) 
 # Frank
 class Signup(Resource):
 
