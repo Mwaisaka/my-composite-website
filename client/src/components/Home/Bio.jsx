@@ -24,10 +24,10 @@ export default function Carousel({ slides }) {
   return (
     <div className="w-full m-auto pt-3">
       <div
-        className="rounded overflow-hidden shadow-lg px-4 py-2 mx-2 sm:mx-4 lg:mx-6"
+        className="rounded overflow-hidden shadow-none px-4 py-2 mx-2 sm:mx-4 lg:mx-6"
         style={{ marginBottom: "20px", marginTop: "20px" }}
       >
-        <h2 className="border-t-2 text-2xl md:text-4xl font-bold text-center text-gray-800 mb-4 md:mb-8">
+        <h2 className="text-2xl md:text-4xl font-bold text-center text-gray-800 mb-4 md:mb-8">
           My Sample Projects
           <h3 className="text-base md:text-xl font-normal text-gray-800 mb-4 md:mb-8 py-2">
           Here are some of my selected works I have done lately.
