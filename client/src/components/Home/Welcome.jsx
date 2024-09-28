@@ -1,6 +1,7 @@
 import React from "react";
 
 import Profile1 from "../Images/Profile1.png";
+import MyProfilePhoto from "../Images/MyProfilePhoto.png";
 
 function Welcome() {
   return (
@@ -62,8 +63,8 @@ function Welcome() {
       </div>
       <div>
         <img
-          className="w-auto h-full mx-auto block transform transition duration-300 ease-in-out hover:scale-105"
-          src={Profile1}
+          className="w-auto h-[75%] mx-auto mt-6 block transform transition duration-300 ease-in-out hover:scale-105"
+          src={MyProfilePhoto}
           alt="Profile Photo"
         />
       </div>

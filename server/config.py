@@ -21,13 +21,12 @@ app = Flask(
 
 app.secret_key = b'Y\xf1Xz\x00\xad|eQ\x80t \xca\x1a\x10K'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI', 'sqlite:///app.db')
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
-# cors=CORS(app)
-cors = CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5173"}}, 
-            methods=["GET", "POST", "PUT", "DELETE"])
-
+cors=CORS(app)
 
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
