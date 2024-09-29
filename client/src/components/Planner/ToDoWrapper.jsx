@@ -73,11 +73,24 @@ function ToDoWrapper() {
     );
   };
   const clearTasks = () => {
-    setToDos([]);
+    const confirmClear = window.confirm(
+      "Are you sure you want to clear all tasks?"
+    );
+    if (confirmClear) {
+      setToDos([]);
+    }
   };
 
-  //Filter incomplete tasks from the "Tasks Left" count
-  const tasksLeftCount = todos.filter((todo) => !todo.completed).length;
+  // Separate active and completed tasks
+  const activeTasks = todos.filter((todo) => !todo.completed);
+  const completedTasks = todos.filter((todo) => todo.completed);
+
+  // Tasks Left count for the active tasks
+  const tasksLeftCount = activeTasks.length;
+  // const tasksLeftCount = todos.filter((todo) => !todo.completed).length;
+  
+  // Tasks Completed count for the completed tasks
+  const tasksCompletedCount = completedTasks.length;
 
   return (
     <div className="ToDoWrapper animate-swipeUp">
@@ -87,7 +100,7 @@ function ToDoWrapper() {
         {/* display todos */}
         <div className="bg-gray-400 w-[100%] py-2 border rounded-lg">
           <div className="flex items-center justify-between w-[95%] mb-4 ml-3 text-xl">
-            <h3>Tasks Left [{tasksLeftCount}]</h3>
+            <h3>Tasks List</h3>
             <button
               className="transform transition duration-300 ease-in-out hover:scale-110"
               onClick={clearTasks}
@@ -96,9 +109,49 @@ function ToDoWrapper() {
             </button>
           </div>
 
-          {todos.map((todo) =>
+          {/* Render Active Tasks */}
+          <h3 className="ml-4 text-lg">Active Tasks[{tasksLeftCount}]</h3>
+          {activeTasks.length > 0 ? (
+            activeTasks.map((todo) =>
+              todo.isEditing ? (
+                <EditToDoForm key={todo.id} editToDo={editTask} task={todo} />
+              ) : (
+                <ToDo
+                  key={todo.id}
+                  task={todo}
+                  deleteTodo={deleteTodo}
+                  editTodo={editTodo}
+                  toggleComplete={toggleComplete}
+                />
+              )
+            )
+          ) : (
+            <p className="ml-4 text-gray-600">No active tasks</p>
+          )}
+
+          {/* Render Completed Tasks */}
+          <h3 className="ml-4 text-lg mt-6">Completed Tasks [{tasksCompletedCount}]</h3>
+          {completedTasks.length > 0 ? (
+            completedTasks.map((todo) =>
+              todo.isEditing ? (
+                <EditToDoForm key={todo.id} editToDo={editTask} task={todo} />
+              ) : (
+                <ToDo
+                  key={todo.id}
+                  task={todo}
+                  deleteTodo={deleteTodo}
+                  editTodo={editTodo}
+                  toggleComplete={toggleComplete}
+                />
+              )
+            )
+          ) : (
+            <p className="ml-4 text-gray-600">No completed tasks</p>
+          )}
+
+          {/* {todos.map((todo) =>
             todo.isEditing ? (
-              <EditToDoForm editToDo={editTask} task={todo} />
+              <EditToDoForm key={todo.id} editToDo={editTask} task={todo} />
             ) : (
               <ToDo
                 key={todo.id}
@@ -108,7 +161,7 @@ function ToDoWrapper() {
                 toggleComplete={toggleComplete}
               />
             )
-          )}
+          )} */}
         </div>
       </div>
     </div>
