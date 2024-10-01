@@ -23,24 +23,24 @@ function ContactUs() {
         marginBottom: "10px",
         marginTop: "20px",
       }}>
-        <div className="bg-gray-100 py-3">
-          <h1 class="text-5xl font-bold text-center text-gray-800 mb-14">
+        <div className="bg-gray-100 py-2">
+          <h1 class="text-5xl font-bold text-center text-gray-800 mb-10">
             Contact
             <hr
-              class="border-t-2 border-red-700  mb-2 py-2"
+              class="border-t-2 border-red-700  mb-1 py-2"
               style={{ width: "10%", margin: "15px auto" }}
             />
           </h1>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-9 mb-2 mt-7">
+        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-9 mb-1 mt-2">
           <div className="rounded overflow-hidden shadow-lg px-6 py-1">
             <div className="icon text-3xl text-center">
               <FontAwesomeIcon icon={faHome} />
             </div>
             <div className="cont">
               <p className="text-center">
-                <br /><strong>Nairobi, Kenya </strong><br /><br /> Ngong Avenue Lane, UpperHill
+                <br /><strong>Nairobi, Kenya. </strong><br /><br /> 
               </p>
             </div>
           </div>
@@ -50,7 +50,7 @@ function ContactUs() {
             </div>
             <div className="cont">
               <p className="text-center">
-                <br /> <strong>+254 *********** </strong><br /> <br />Monday - Friday from 7am - 5pm
+                <br /> <strong>+254 716-461951 </strong><br /> <br />Monday - Friday from 7am - 5pm
               </p>
             </div>
           </div>
@@ -61,7 +61,7 @@ function ContactUs() {
             <div className="cont">
               <p className="text-center">
                 <a href="mailto:admin@gmail.com" style={{ color: "blue" }}>
-                  <br /><u><strong>admin@gmail.com</strong></u> <br /> <br />
+                  <br /><u><strong>frankkashere@gmail.com</strong></u> <br /> <br />
                 </a>
                 Contact me any time!
               </p>
@@ -73,7 +73,7 @@ function ContactUs() {
           <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-7" style={{
             maxWidth: "1200px",
             marginBottom: "10px",
-            marginTop: "10px",
+            marginTop: "0px",
           }}>
 
             <div className="col-lg-7 col-span-2" >

@@ -49,6 +49,7 @@ import EditTestimonials from "./components/Testimonials/EditTestimonials.jsx";
 
 function Main() {
   const [user, setUser] = useState(null);
+  
 
   useEffect(() => {
     fetch("http://127.0.0.1:5555/check_session").then((response) => {

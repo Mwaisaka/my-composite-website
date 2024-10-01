@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx';
 
 function Layout() {
+  
   return (
     <div className="flex flex-col min-h-screen w-full">
       <ScrollToTop />
