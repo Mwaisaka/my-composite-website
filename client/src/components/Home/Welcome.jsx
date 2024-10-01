@@ -9,14 +9,14 @@ function Welcome() {
       className=" grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-2 gap-5"
       style={{
         maxWidth: "1250px",
-        height: "auto",
-        marginBottom: "30px",
+        height: "550px",
+        marginBottom: "0px",
         marginTop: "40px",
       }}
     >
       <div className="rounded overflow-hidden shadow-none">
-        <div className="px-6 py-4">
-          <div className="text-2xl mb-2 ">
+        <div className="px-6 py-0">
+          <div className="text-2xl mb-0 ">
             <h3>
               Hello there!
               <br />I am <strong className="text-4xl">Frank Mwaisaka</strong>,
@@ -24,7 +24,7 @@ function Welcome() {
               a Fullstack Web Developer. <br />
               <hr
                 class="border-t-2 border-red-700  mb-2 "
-                style={{ width: "15%", margin: "15px auto", marginLeft: "0px" }}
+                style={{ width: "25%", margin: "15px auto", marginLeft: "0px" }}
               />
             </h3>
           </div>
@@ -43,20 +43,20 @@ function Welcome() {
           </p>
           <a
             href="/about"
-            className="inline-block bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded mt-4"
+            className="inline-block bg-orange-500 hover:bg-orange-700 text-white font-bold py-0 px-2 rounded mt-4"
           >
             Learn More
           </a>
           <br />
           <br />
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">
             #FullStackWebDevelopment
           </span>
 
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">
             #WebScraping
           </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1">
             #APIDevelopment
           </span>
         </div>
