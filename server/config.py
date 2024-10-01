@@ -10,6 +10,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from flask_cors import CORS
 
+from flask_talisman import Talisman
+
 # app = Flask(__name__)
 
 # app = Flask(
@@ -41,4 +43,7 @@ migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 
 api = Api(app)
+
+talisman = Talisman(app, force_https=True)
+
 
