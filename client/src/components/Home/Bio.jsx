@@ -50,11 +50,11 @@ export default function Carousel({ slides }) {
               <div
                 key={i}
                 className="relative w-full flex-none"
-                style={{ flex: "0 0 100%", height: "auto" }}
+                style={{ flex: "0 0 100%", height: "500px", width: "100px"}}
               >
                 <img
                   src={s.image}
-                  className="w-full h-auto object-cover"
+                  className="w-[100%] h-[100%] object-cover"
                   alt="Slide"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center p-4">

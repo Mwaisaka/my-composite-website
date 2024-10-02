@@ -1,10 +1,18 @@
 
-import React, { useRef } from "react";
+import React, { useRef, useState} from "react";
 import "./ContactUs.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function ContactUs() {
+
+  const [name, setName] = useState("");  
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+  const [feedback, setFeedback] = useState([]);
+  const [error, setError] = useState(null);
 
   const textareaRef = useRef(null);
   const charCountRef = useRef(null);
@@ -16,6 +24,53 @@ function ContactUs() {
       charCountRef.current.textContent = `${maxLength - charCount} characters remaining.`;
     }
   }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    setError(null);// Reset error state
+
+    if (name.trim() && message.trim()) {
+      // Get the current date and time
+      const date_time = new Date().toLocaleString();
+
+      fetch("http://127.0.0.1:5555/testimonial", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name: name, email : email, subject : subject, phone : phone, message: message, date_time: date_time })
+      })
+        .then((response) => {
+          return response.json();
+        })
+      // Add new message to the testimonials array
+      setFeedback((prevMessages) => [
+        ...prevMessages,
+        { name, email, subject, phone, message, date_time },
+      ]);
+      alert("Message submitted successfully. Thank you!");
+
+      // Clear form fields after submission
+      setName("");
+      setEmail("");
+      setSubject("");
+      setPhone("");
+      setMessage("");
+
+      // confirm if message was submitted
+      console.log("name:", name);
+      console.log("email:", email);
+      console.log("subject:", subject);
+      console.log("phone:", phone);
+      console.log("message:", message);
+      console.log("date_time:", date_time);
+    } else {
+      // show error message
+      console.log("Please fill in all fields");
+    }
+  }
+
 
   return (
     <div className="animate-swipeUp w-full m-auto pt-3 max-w-none" >
@@ -33,7 +88,7 @@ function ContactUs() {
           </h1>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-9 mb-1 mt-2">
+        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-9 mb-0 mt-2">
           <div className="rounded overflow-hidden shadow-lg px-6 py-1">
             <div className="icon text-3xl text-center">
               <FontAwesomeIcon icon={faHome} />
@@ -92,6 +147,7 @@ function ContactUs() {
                     action="#"
                     method="post"
                     data-toggle="validator"
+                    onSubmit={handleSubmit}
                   >
                     <div className="row">
                       <div className="col-md-6">

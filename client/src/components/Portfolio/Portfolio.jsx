@@ -13,11 +13,11 @@ import {
 function Portfolio() {
   const [jobs, setJobs] = useState([]);
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:5555/jobs")
-      .then((r) => r.json())
-      .then(setJobs);
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://127.0.0.1:5555/jobs")
+  //     .then((r) => r.json())
+  //     .then(setJobs);
+  // }, []);
 
   return (
     <div  className="animate-swipeUp" style={{ display: "flex", justifyContent: "center", padding: "10px" }}>
