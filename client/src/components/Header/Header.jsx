@@ -306,7 +306,7 @@ export default function Header() {
                   )}
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   to="/planner"
                   className={({ isActive }) =>
@@ -318,7 +318,7 @@ export default function Header() {
                 >
                   Planner
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink
                   to="/testimonials"

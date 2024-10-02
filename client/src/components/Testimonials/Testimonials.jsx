@@ -138,7 +138,7 @@ function Testimonials() {
             <div className="w-[60%] ">
               <div className="contact-from mt-1" style={{ padding: "10px" }}>
                 <div className="section-title">
-                  <h2>Please share your feedback with us...</h2>
+                  <h2>Please share your feedback with me...</h2>
                   <hr
                     class="border-t-2 border-red-700  mb-2 py-1"
                     style={{ width: "10%", margin: "15px" }}

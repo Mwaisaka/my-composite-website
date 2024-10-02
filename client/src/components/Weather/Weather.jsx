@@ -57,11 +57,12 @@ const Weather = () => {
 
   return (
     <div
-      className="mt-8 mb-8 flex justify-center items-center bg-gray-100"
+      className="mt-12 mb-8 flex justify-center items-center bg-gray-100"
       style={{
         backgroundImage: `url(${weather_image1})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        height: "500px",
       }}
     >
       <div className="flex flex-col items-center p-4 bg-blue-200 rounded-lg shadow-md w-96">
