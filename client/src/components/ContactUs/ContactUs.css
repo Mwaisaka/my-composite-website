@@ -1,6 +1,6 @@
 
 .contact-from {
-    background-color: #fff;
+    background-color: #d8dadc51;
     padding: 20px;
     border-radius: 5px;
   }
@@ -52,11 +52,11 @@
   .contact-address {
     background-color: #fff;
     padding: 20px 50px 50px;
-    border-radius: 5px;
   }
   
   .contact-address-container ul {
     padding-top: 30px;
+    
   }
   
   .contact-address-container ul li .singel-address {

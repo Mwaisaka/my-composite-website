@@ -22,7 +22,7 @@ function Gallery() {
       <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">
         What Service You Will Get From Me
         <h3 class="text-base font-normal text-gray-800 mt-4 mb-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          I turn ideas into extraordinary digital products.
           <hr
             class="border-t-2 border-red-700  mb-2"
             style={{ width: "15%", margin: "15px auto" }}
