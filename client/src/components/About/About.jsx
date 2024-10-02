@@ -15,16 +15,16 @@ export default function About() {
   return (
     <div className="animate-swipeUp w-full m-auto pt-3 max-w-none">
       <div
-        className="rounded overflow-hidden shadow-none px-6 py-4"
-        style={{
-          marginBottom: "20px",
-          marginTop: "20px",
-        }}
+        className="rounded overflow-hidden shadow-none px-6 py-0"
+        // style={{
+        //   marginBottom: "0px",
+        //   marginTop: "0px",
+        // }}
       >
-        <div className="bg-gray-100 py-3">
-          <h1 class="text-5xl font-bold text-center text-gray-800 mb-14">
+        <div className="bg-gray-100 py-2">
+          <h1 class="text-5xl font-bold text-center text-gray-800 mb-4">
             About Me
-            <h3 class="text-2xl font-normal text-gray-800 mt-4 mb-8">
+            <h3 class="text-2xl font-normal text-gray-800 mt-4 mb-2">
               Turning ideas into real life products is my calling.
               <hr
                 class="border-t-2 border-red-700  mb-2"

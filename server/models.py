@@ -212,3 +212,28 @@ class Task(db.Model, SerializerMixin):
             "id": self.id,
             "task": self.task,
         }
+
+class Feedback(db.Model, SerializerMixin):
+    __tablename__ = 'feedbacks'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), unique=True)
+    subject = db.Column(db.String(255), nullable=False)
+    phone = db.Column(db.String(255), nullable=False)
+    message = db.Column(db.String(255), nullable=False)
+    date_time = db.Column(db.DateTime)
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "subject": self.subject,
+            "phone": self.phone,
+            "message": self.message,
+            "date_time": self.date_time.Date().toLocaleString() if self.date_time else None
+        }
+    
+    def __repr__ (self):
+        return f'<Feedback name={self.name} email={self.email} subject={self.subject} phone={self.phone} message={self.message} date={self.date_time}>'

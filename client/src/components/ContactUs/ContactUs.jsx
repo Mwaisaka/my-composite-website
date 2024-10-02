@@ -34,7 +34,7 @@ function ContactUs() {
       // Get the current date and time
       const date_time = new Date().toLocaleString();
 
-      fetch("http://127.0.0.1:5555/feedback", {
+      fetch("http://127.0.0.1:5555/addfeedback", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -156,6 +156,8 @@ function ContactUs() {
                             name="name"
                             type="text"
                             placeholder="Enter your name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             data-error="Name is required."
                             required
                           />
@@ -168,6 +170,8 @@ function ContactUs() {
                             name="email"
                             type="email"
                             placeholder="Enter email address"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             data-error="Valid email is required."
                             required
                           />
@@ -180,6 +184,8 @@ function ContactUs() {
                             name="subject"
                             type="text"
                             placeholder="Subject"
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
                             data-error="Subject is required."
                             required
                           />
@@ -192,6 +198,8 @@ function ContactUs() {
                             name="phone"
                             type="text"
                             placeholder="Phone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                             data-error="Phone is required."
                             required
                           />
@@ -203,6 +211,8 @@ function ContactUs() {
                           <textarea
                             name="message"
                             placeholder="Message (150 maximum characters)"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
                             data-error="Please, leave us a message."
                             required
                             ref={textareaRef}

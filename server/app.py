@@ -5,7 +5,7 @@ from flask_restful import Resource
 from sqlalchemy.exc import IntegrityError
 from flask_cors import CORS
 from config import app, db, api, cors
-from models import User, Department, Accounting, UserDepartment, Salary, Job, Registration, Subscriber, Testimonial, Task
+from models import User, Department, Accounting, UserDepartment, Salary, Job, Registration, Subscriber, Testimonial, Task, Feedback
 from datetime import datetime
 import os
 
@@ -589,6 +589,48 @@ class Tasks(Resource):
             }, 200            
         else:
             return {"error": "Task not found"}, 404 
+
+class AddFeedback(Resource):
+    def post(self):
+        json = request.get_json()
+        if not json:
+            return {"message": "Request body is empty."}, 400
+
+        # Validate required fields
+        required_fields = ["name", "email", "subject", "phone", "message"]
+        for field in required_fields:
+            if field not in json or not json[field]:
+                return {"message": f"Field '{field}' is required."}, 400
+
+        # Check if the message already exists
+        existing_message = Feedback.query.filter_by(message=json["message"]).first()
+        if existing_message:
+            return {"message": "Feedback already exists."}, 500
+
+        try:            
+            # Get the current date and time
+            current_datetime = datetime.now()
+            
+            feedback = Feedback(
+                name=json["name"],
+                email=json["email"],
+                subject=json["subject"],
+                phone=json["phone"],
+                message=json["message"],
+                date_time = current_datetime
+            )
+
+            db.session.add(feedback)
+            db.session.commit()
+            return feedback.to_dict(), 201
+
+        except IntegrityError as e:
+            db.session.rollback()
+            return {"message": "Feedback already exists."}, 409
+
+        except Exception as e:
+            db.session.rollback()
+            return {"message": str(e)}, 500
         
 api.add_resource(Login, "/login", endpoint="login")
 api.add_resource(Signup, "/signup", endpoint="signup")
@@ -610,6 +652,7 @@ api.add_resource(TestimonialAdd, "/testimonial", endpoint="testimonial")
 api.add_resource(Testimonials, "/testimonials", "/testimonials/<int:id>", endpoint="testimonials")
 api.add_resource(AddTask, "/addtask", endpoint="addtask")
 api.add_resource(Tasks, "/tasks","/tasks/<int:id>", endpoint="tasks")
+api.add_resource(AddFeedback, "/addfeedback", endpoint="addfeedback")
 
 if __name__ == "__main__":
     app.run(port=5555, debug=True)
